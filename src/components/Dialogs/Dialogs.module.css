@@ -12,7 +12,17 @@
 }
 
 .dialog {
+    margin: 10px;
+}
 
+.dialog a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.dialog a:hover {
+    font-weight: 700;
 }
 
 .messages {
@@ -20,5 +30,9 @@
 }
 
 .message {
-
+    margin: 10px;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
 }
+
