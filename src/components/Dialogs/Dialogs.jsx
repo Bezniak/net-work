@@ -14,11 +14,11 @@ const Dialogs = (props) => {
 
     const onMessageChange = () => {
         let text = ref.current.value;
-        props.updateNewMessageText(text)
+        props.dispatch({type: 'UPDATE-NEW-MESSAGE-TEXT', newMessageText: text})
     }
 
     const sendMessage = () => {
-        props.sendMessage();
+        props.dispatch({type: 'SEND-MESSAGE'});
     }
 
     return (

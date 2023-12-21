@@ -7,7 +7,7 @@ export const store = {
                 {id: 2, message: 'It\'s my first post!', likeCounts: 57},
                 {id: 3, message: 'Yo', likeCounts: 232},
             ],
-            newPostText: 'it-incubator.com',
+            newPostText: '',
         },
         dialogsPage: {
             dialogs: [
@@ -24,52 +24,58 @@ export const store = {
                 {id: 3, message: 'What are you doing?'},
                 {id: 4, message: 'Yo'},
             ],
-            newPostMessage: 'LaL',
+            newPostMessage: '',
         },
+    },
+    _callSubscriber() {
+        console.log('State changed');
     },
 
     getState() {
         return this._state
     },
-
-    _callSubscriber() {
-        console.log('State changed');
-    },
-
-    addPost() {
-            let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likeCounts: 0,
-        };
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
-
-    sendMessage() {
-        let newMessage = {
-            id: 5,
-            message: this._state.dialogsPage.newPostMessage,
-        }
-        this._state.dialogsPage.messages.push(newMessage);
-        this._state.dialogsPage.newPostMessage = '';
-        this._callSubscriber(this._state);
-    },
-
-    updateNewMessageText(newMessageText) {
-        this._state.dialogsPage.newPostMessage = newMessageText;
-        this._callSubscriber(this._state);
-    },
-
     subscribe(observer) {
         this._callSubscriber = observer;
     },
+
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD-POST': {
+                let newPost = {
+                    id: 5,
+                    message: this._state.profilePage.newPostText,
+                    likeCounts: 0,
+                };
+                this._state.profilePage.posts.push(newPost);
+                this._state.profilePage.newPostText = '';
+                this._callSubscriber(this._state);
+                break;
+            }
+            case 'UPDATE-NEW-POST-TEXT': {
+                this._state.profilePage.newPostText = action.newText;
+                this._callSubscriber(this._state);
+                break;
+            }
+            case 'SEND-MESSAGE': {
+                let newMessage = {
+                    id: 5,
+                    message: this._state.dialogsPage.newPostMessage,
+                }
+                this._state.dialogsPage.messages.push(newMessage);
+                this._state.dialogsPage.newPostMessage = '';
+                this._callSubscriber(this._state);
+                break;
+            }
+            case 'UPDATE-NEW-MESSAGE-TEXT': {
+                this._state.dialogsPage.newPostMessage = action.newMessageText;
+                this._callSubscriber(this._state);
+                break;
+            }
+
+            default:
+                return this._state
+        }
+    }
 
 }
 
