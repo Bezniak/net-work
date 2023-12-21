@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+const SEND_MESSAGE = 'SEND_MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
+
 export const store = {
 
     _state: {
@@ -40,7 +45,7 @@ export const store = {
 
     dispatch(action) {
         switch (action.type) {
-            case 'ADD-POST': {
+            case ADD_POST: {
                 let newPost = {
                     id: 5,
                     message: this._state.profilePage.newPostText,
@@ -51,12 +56,12 @@ export const store = {
                 this._callSubscriber(this._state);
                 break;
             }
-            case 'UPDATE-NEW-POST-TEXT': {
+            case UPDATE_NEW_POST_TEXT: {
                 this._state.profilePage.newPostText = action.newText;
                 this._callSubscriber(this._state);
                 break;
             }
-            case 'SEND-MESSAGE': {
+            case SEND_MESSAGE: {
                 let newMessage = {
                     id: 5,
                     message: this._state.dialogsPage.newPostMessage,
@@ -66,7 +71,7 @@ export const store = {
                 this._callSubscriber(this._state);
                 break;
             }
-            case 'UPDATE-NEW-MESSAGE-TEXT': {
+            case UPDATE_NEW_MESSAGE_TEXT: {
                 this._state.dialogsPage.newPostMessage = action.newMessageText;
                 this._callSubscriber(this._state);
                 break;
@@ -78,5 +83,10 @@ export const store = {
     }
 
 }
+
+export const addPostAC = () => ({type: ADD_POST});
+export const updateNewPostTextAC = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
+export const updateNewMessageTextAC = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: text});
+export const sendMessageAC = () => ({type: SEND_MESSAGE});
 
 window.store = store;
