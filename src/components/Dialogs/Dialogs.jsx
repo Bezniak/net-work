@@ -7,20 +7,19 @@ import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialog-reducer"
 
 const Dialogs = (props) => {
 
-    const state = props.store.getState().dialogsPage
 
-    let dialogsElement = state.dialogs.map(d => <DialogItem name={d.name} id={d.id} key={d.id}/>)
-    let messagesElement = state.messages.map(m => <Message message={m.message} id={m.id} key={m.id}/>)
-    let newMessageBody = state.newPostMessage;
+    let dialogsElement = props.dialogPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} key={d.id}/>)
+    let messagesElement = props.dialogPage.messages.map(m => <Message message={m.message} id={m.id} key={m.id}/>)
+    let newMessageBody = props.dialogPage.newPostMessage;
 
 
     const onNewMessageChange = (e) => {
         let body = e.target.value;
-        props.store.dispatch(updateNewMessageBodyAC(body))
+        props.dispatch(updateNewMessageBodyAC(body))
     }
 
     const onSendMessageClick = () => {
-        props.store.dispatch(sendMessageAC());
+        props.dispatch(sendMessageAC());
     }
 
     return (
