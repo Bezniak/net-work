@@ -2,24 +2,25 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {sendMessageAC, updateNewMessageTextAC} from "../../redux/state";
+import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialog-reducer";
 
 
 const Dialogs = (props) => {
 
+    const state = props.store.getState().dialogsPage
 
-    let dialogsElement = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} key={d.id}/>)
-    let messagesElement = props.dialogsPage.messages.map(m => <Message message={m.message} id={m.id} key={m.id}/>)
+    let dialogsElement = state.dialogs.map(d => <DialogItem name={d.name} id={d.id} key={d.id}/>)
+    let messagesElement = state.messages.map(m => <Message message={m.message} id={m.id} key={m.id}/>)
+    let newMessageBody = state.newPostMessage;
 
-    let ref = React.createRef();
 
-    const onMessageChange = () => {
-        let text = ref.current.value;
-        props.dispatch(updateNewMessageTextAC(text))
+    const onNewMessageChange = (e) => {
+        let body = e.target.value;
+        props.store.dispatch(updateNewMessageBodyAC(body))
     }
 
-    const sendMessage = () => {
-        props.dispatch(sendMessageAC());
+    const onSendMessageClick = () => {
+        props.store.dispatch(sendMessageAC());
     }
 
     return (
@@ -39,11 +40,10 @@ const Dialogs = (props) => {
                           name="newMessage"
                           id="newMessage"
                           placeholder='Wright your message'
-                          ref={ref}
-                          value={props.dialogsPage.newPostMessage}
-                          onChange={onMessageChange}
+                          value={newMessageBody}
+                          onChange={onNewMessageChange}
                 />
-                <button onClick={sendMessage} className='btn'>Send</button>
+                <button onClick={onSendMessageClick} className='btn'>Send</button>
             </div>
         </>
     )
