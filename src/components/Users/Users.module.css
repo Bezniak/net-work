@@ -1,0 +1,95 @@
+.userBlock {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.userContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+
+}
+
+.usersWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 160px;
+    margin: 20px;
+}
+
+.photoButtonBlock {
+    cursor: pointer;
+}
+
+.photoButtonBlock img {
+    width: 160px;
+    border-radius: 5px;
+
+}
+
+
+.userSVG {
+    width: 160px;
+    height: 160px;
+    fill: #3f4855;
+    background-color: #a1b1af;
+    border-radius: 5px;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 160px;
+}
+
+.userNameStatus {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.fullName {
+    padding-bottom: 5px;
+    font-weight: 700;
+    color: #2a5885;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.fullName:hover {
+    text-decoration: underline;
+}
+
+.status {
+    color: #818c99;
+}
+
+.friendButton svg {
+    width: 20px;
+    height: 20px;
+    color: #2a5885;
+    cursor: pointer;
+}
+
+.friendButton button{
+    background-color: #ffffff;
+    border: none;
+}
+
+.addRemoveBtn {
+    position: relative;
+}
+
+.hoverContent {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+}
+
