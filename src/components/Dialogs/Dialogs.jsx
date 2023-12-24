@@ -22,7 +22,7 @@ const Dialogs = (props) => {
     }
 
     return (
-        <>
+        <div>
             <div className={s.dialogs}>
                 <div className={s.dialogsItem}>
                     {dialogsElement}
@@ -43,7 +43,7 @@ const Dialogs = (props) => {
                 />
                 <button onClick={onSendMessageClick} className='btn'>Send</button>
             </div>
-        </>
+        </div>
     )
         ;
 };

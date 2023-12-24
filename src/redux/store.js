@@ -1,5 +1,5 @@
 // import {profileReducer} from "./profile-reducer";
-// import {dialogReducer} from "./dialog-reducer";
+// import {dialogsReducer} from "./dialog-reducer";
 // import {sidebarReducer} from "./sidebar-reducer";
 //
 // export const store = {
@@ -47,7 +47,7 @@
 //
 //
 //         this._state.profilePage = profileReducer(this._state.profilePage, action);
-//         this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action);
+//         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
 //         this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 //
 //         this._callSubscriber(this._state);
