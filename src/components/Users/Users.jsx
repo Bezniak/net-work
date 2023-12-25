@@ -8,16 +8,22 @@ import axios from "axios";
 
 export const Users = (props) => {
 
-    if (props.users.length === 0) {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
-            .then(response => {
-                props.setUsers(response.data.items)
-            })
+
+    let getUsers = () => {
+        {
+            if (props.users.length === 0) {
+                axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
+                    .then(response => {
+                        props.setUsers(response.data.items)
+                    })
+            }
+        }
     }
 
 
     return (
         <>
+            <button className='btn' onClick={getUsers}>Get user</button>
             <SearchInput/>
             <div className={s.userBlock}>
                 {
@@ -36,7 +42,6 @@ export const Users = (props) => {
                                 <div className={s.userInfo}>
                                     <div className={s.userNameStatus}>
                                         <div className={s.fullName}>{u.name}</div>
-                                        {/*<div className={s.status}>{u.status}</div>*/}
                                     </div>
 
                                     <div className={s.friendButton}>
