@@ -34,8 +34,8 @@
 .userSVG {
     width: 160px;
     height: 160px;
-    fill: #3f4855;
-    background-color: #a1b1af;
+    fill: #9eb4c8;
+    background-color: #dfe6ed;
     border-radius: 5px;
 }
 
@@ -53,6 +53,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    padding-top: 10px;
+
 }
 
 .fullName {
