@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import {Users} from "./Users";
 import {followAC, setUsersAC, unfollowAC} from "../../redux/users-reducer";
+import Users from "./Users";
 
 function mapState(state) {
     return {
@@ -21,7 +21,6 @@ function mapDispatch(dispatch) {
         }
     }
 }
-
 
 
 export default connect(mapState, mapDispatch)(Users)
