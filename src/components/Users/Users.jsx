@@ -10,9 +10,14 @@ class Users extends Component {
     componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
             .then(response => {
-                this.props.setUsers(response.data.items)
+                this.props.setUsers(response.data.items);
+            })
+            .catch(error => {
+                alert(`Error occurred: ${error}`);
             })
     }
+
+
 
     render() {
         return (
