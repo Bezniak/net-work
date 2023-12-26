@@ -52,8 +52,7 @@ const Users = (props) => {
             <Pagination currentPage={props.currentPage} onPageChange={props.onPageChanged}
                         totalPages={props.totalUserCount}/>
 
-        </div>
-    );
-};
+        </div>)
+}
 
 export default Users;
