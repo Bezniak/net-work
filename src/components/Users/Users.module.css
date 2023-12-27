@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    background-color: #fff;
+    border-radius: 10px;
 }
 
 .userContainer {
@@ -26,7 +28,7 @@
 
 .photoButtonBlock img {
     width: 160px;
-    border-radius: 5px;
+    border-radius: 10px;
 
 }
 
@@ -48,14 +50,18 @@
     width: 160px;
 }
 
+.userInfo a {
+    text-decoration: none;
+}
+
 .userNameStatus {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     padding-top: 10px;
-
 }
+
 
 .fullName {
     padding-bottom: 5px;
@@ -77,7 +83,7 @@
 }
 
 .friendButton button{
-    background-color: #ffffff;
+    background-color: #fff;
     border: none;
 }
 

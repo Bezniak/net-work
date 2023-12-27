@@ -32,9 +32,13 @@ const Users = (props) => {
 
 
                                 <div className={s.userInfo}>
-                                    <div className={s.userNameStatus}>
-                                        <div className={s.fullName}>{u.name}</div>
-                                    </div>
+
+                                    <NavLink to={'/profile/' + u.id}>
+                                        <div className={s.userNameStatus}>
+                                            <div className={s.fullName}>{u.name}</div>
+                                        </div>
+                                    </NavLink>
+
 
                                     <div className={s.friendButton}>
                                         {u.followed

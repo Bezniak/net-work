@@ -17,7 +17,7 @@ const App = (props) => {
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route path='/profile/*' element={<ProfileContainer/>}/>
+                    <Route path='/profile/:id?' element={<ProfileContainer/>}/>
                     <Route path='/users' element={<UsersContainer/>}/>
                     <Route path='/dialogs' element={<DialogsContainer/>}/>
                     <Route path='/news' element={<News/>}/>
@@ -27,7 +27,8 @@ const App = (props) => {
             </div>
         </div>
 
-    );
+    )
+        ;
 };
 
 export default App;

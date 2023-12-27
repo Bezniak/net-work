@@ -7,9 +7,6 @@ import {FaChevronDown} from "react-icons/fa";
 
 const ProfileInfo = (props) => {
 
-
-
-
     if (!props.profile) {
         return <Preloader/>
     }
