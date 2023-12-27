@@ -1,8 +1,155 @@
-.profileImg {
-    width: 100%;
-    height: 300px;
+.descriptionBlock {
+    z-index: 1;
+    position: relative;
+
 }
 
-.descriptionBlock {
-    padding: 10px;
+.noBackgroundPhoto {
+    position: relative;
+    width: 100%;
+    height: 252px;
+    background-color: rgba(92, 77, 54, .32);
+    border-radius: 15px;
 }
+
+.profilePhoto {
+    position: absolute;
+    z-index: 999;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    top: 120px;
+    left: 30px;
+}
+
+.profileBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 140px;
+    padding-top: 20px;
+    margin-top: -25px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    position: absolute;
+    z-index: 2;
+}
+
+.profileAbout {
+    margin-left: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.profileUserName {
+    max-width: 100%;
+    font-size: 18px;
+    line-height: 26px;
+    color: #000;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-weight: 800;
+    padding-bottom: 10px;
+
+}
+
+.profileAboutMe {
+    font-size: 14px;
+    color: #000;
+}
+
+.profileAboutMe:first-letter {
+    text-transform: uppercase;
+    font-weight: 400;
+    margin: 10px auto 0 0;
+}
+
+.profileAboutButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.profileAboutButton svg {
+    fill: gray;
+    width: 20px;
+    height: 20px;
+}
+
+.profileAboutButton span {
+    color: gray;
+    margin-left: 4px;
+    margin-right: 12px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.profileAboutButton span:hover {
+    text-decoration: underline;
+}
+
+.profileAboutButton:hover {
+    cursor: pointer;
+}
+
+
+
+.profileButtons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 20px;
+    gap: 12px;
+    list-style-type: none;
+}
+
+.profileButtons > li {
+    background-color: #e9f0f8;
+    padding: 7px 12px;
+    border-radius: 10px;
+}
+
+.profileButtons > li:hover {
+    cursor: pointer;
+    background-color: #7e93a0;
+}
+
+.profileButtons li:first-child {
+    background-color: #2a5885;
+    color: #fff;
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+}
+
+.profileButtons li:first-child:hover {
+    cursor: pointer;
+    background-color: #3b5998;
+
+}
+
+.profileButtons li:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    background-color: #e9f0f8;
+    color: #2a5885;
+}
+
+.profileButtons svg {
+    fill: #376fb0;
+    width: 20px;
+    height: 20px;
+
+}
+
+.profileButtons > li:hover {
+    cursor: pointer;
+    background-color: #7e93a0;
+}
+
+

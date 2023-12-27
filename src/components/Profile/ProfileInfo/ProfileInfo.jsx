@@ -1,14 +1,64 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
+import Preloader from "../../common/Preloader/Preloader";
+import {MdOutlineInfo, MdOutlineWorkOutline} from "react-icons/md";
+import {BsPersonCheck, BsTelephone} from "react-icons/bs";
+import {FaChevronDown} from "react-icons/fa";
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+
+
+
+
+    if (!props.profile) {
+        return <Preloader/>
+    }
+
     return (
         <div>
-            <div>
-                <img src="BGimg.jpg" alt="bg" className={s.profileImg}/>
-            </div>
             <div className={s.descriptionBlock}>
-                ava + descriptions
+
+                <div>
+                    {props.profile.photos.background
+                        ? <img src={props.profile.photos.background} alt="background"/>
+                        : <div className={s.noBackgroundPhoto}></div>
+                    }
+                </div>
+
+                <img className={s.profilePhoto} src={props.profile.photos.large} alt="avatar"/>
+
+                <div className={s.profileBlock}>
+
+                    <div className={s.profileAbout}>
+                        <div className={s.profileUserName}>{props.profile.fullName}</div>
+                        <div className={s.profileAboutMe}>{props.profile.aboutMe}</div>
+
+
+                        <div className={s.profileAboutButton}>
+                            {props.profile.lookingForAJob &&
+                                <>
+                                    <MdOutlineWorkOutline/>
+                                    <span>#OpenToWork</span>
+                                </>
+                            }
+                            <MdOutlineInfo/>
+                            <span>More details</span>
+                        </div>
+
+
+                    </div>
+
+                    <div>
+                        <ul className={s.profileButtons}>
+                            <li>Message</li>
+                            <li><BsTelephone/></li>
+                            <li><BsPersonCheck/></li>
+                            <li>More <FaChevronDown/></li>
+                        </ul>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     );

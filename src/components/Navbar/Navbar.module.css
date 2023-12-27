@@ -1,18 +1,41 @@
 .nav {
     grid-area: n;
-    padding: 20px;
-    background-color: #3b5998;
+    background-color: #ebecee;
 }
 
-.item {
-    color: white;
-    margin-bottom: 10px;
-    text-decoration: none;
+.navBlock {
+    list-style-type: none;
+    margin: 0 0 10px 0;
+}
+
+.active {
+    font-weight: 500;
+}
+
+.navBlock > li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 8px;
 
 }
 
-.item a.active {
-    font-weight: bolder;
-    color: white;
+.navBlock > li:hover {
+    background-color: #dfe6ed;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+.navBlock a {
     text-decoration: none;
+    color: #000;
+}
+
+.navBlock svg {
+    width: 20px;
+    height: 20px;
+    color: #447ab9;
 }

@@ -4,8 +4,10 @@ import Pagination from "../common/Pagination/Pagination";
 import s from "./Users.module.css";
 import {MdOutlinePhotoCamera} from "react-icons/md";
 import {IoPersonAddSharp, IoPersonRemoveSharp} from "react-icons/io5";
+import {NavLink} from "react-router-dom";
 
 const Users = (props) => {
+
     return (
         <div>
             <SearchInput/>
@@ -19,12 +21,14 @@ const Users = (props) => {
                         <div key={`${u.id}-${index}`} className={s.userContainer}>
                             <div className={s.usersWrapper} key={u.id}>
 
-                                <div className={s.photoButtonBlock}>
-                                    {u.photos.small
-                                        ? <img src={u.photos.small} alt="ava"/>
-                                        : <MdOutlinePhotoCamera className={s.userSVG}/>
-                                    }
-                                </div>
+                                <NavLink to={'/profile/' + u.id}>
+                                    <div className={s.photoButtonBlock}>
+                                        {u.photos.small
+                                            ? <img src={u.photos.small} alt="ava"/>
+                                            : <MdOutlinePhotoCamera className={s.userSVG}/>
+                                        }
+                                    </div>
+                                </NavLink>
 
 
                                 <div className={s.userInfo}>

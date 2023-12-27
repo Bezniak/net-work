@@ -1,11 +1,11 @@
 import React from 'react';
 import style from './Header.module.css';
-import {SiPaloaltonetworks} from "react-icons/si";
+import {IoLogoElectron} from "react-icons/io5";
 
 const Header = () => {
     return (
         <header className={style.header}>
-            <SiPaloaltonetworks className={style.headerLogo}/>
+            <IoLogoElectron  className={style.headerLogo}/> <span>Chatting</span>
         </header>
     );
 };

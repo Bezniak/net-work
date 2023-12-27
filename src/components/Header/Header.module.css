@@ -1,11 +1,25 @@
 .header {
     grid-area: h;
-    background-color: #3b5998;
+    padding-left: 32px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.header span {
+    margin-left: 10px;
+    font-weight: 900;
+    line-height: 18px;
+    letter-spacing: 0.2rem;
+    color: #0676fd;
+    text-transform: uppercase;
 }
 
 .headerLogo {
-    width: 50px;
-    height: 50px;
+    width: 24px;
+    height: 24px;
     margin: 10px 15px;
-    color: #fff;
+    color: #ffffff;
+    background-color: #0676fd;
 }
