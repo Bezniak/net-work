@@ -1,25 +1,112 @@
 .header {
     grid-area: h;
-    padding-left: 32px;
     background-color: #fff;
     display: flex;
     align-items: center;
     border-radius: 10px;
 }
 
-.header span {
-    margin-left: 10px;
-    font-weight: 900;
-    line-height: 18px;
-    letter-spacing: 0.2rem;
-    color: #0676fd;
-    text-transform: uppercase;
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.headerLogo {
-    width: 24px;
-    height: 24px;
-    margin: 10px 15px;
+.logo p {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 5px;
+    font-weight: 900;
+    letter-spacing: 0.1rem;
+    color: #0676fd;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.logo svg {
+    margin-left: 50px;
+    width: 30px;
+    height: 30px;
     color: #ffffff;
     background-color: #0676fd;
 }
+
+
+.headerWrapper {
+    display: flex;
+
+}
+
+
+.headerInputBlock {
+    margin-left: 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.headerInputList {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    list-style-type: none;
+
+}
+
+.headerInputList > li {
+    margin: 0;
+    padding: 0;
+}
+
+.headerInputList svg {
+    width: 24px;
+    height: 24px;
+    color: gray;
+}
+
+
+
+
+
+
+
+
+
+.headerLoginButtonBlock {
+    margin-left: 500px;
+    display: flex;
+}
+
+
+.headerLoginButtonList {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    list-style-type: none;
+}
+
+.headerLoginButtonList svg {
+    width: 24px;
+    height: 24px;
+    color: gray;
+}
+
+.loginButtonsItems {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.loginButtonsItems img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+

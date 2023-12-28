@@ -7,7 +7,7 @@ export const SearchInput = () => {
         <div className={s.searchInput}>
             <input type="text" className='input' placeholder='Enter your request'/>
             <div className={s.searchIcon}>
-                <IoIosSearch className={s.searchSVG}/>
+                <IoIosSearch/>
             </div>
         </div>
     );
