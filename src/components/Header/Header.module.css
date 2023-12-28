@@ -68,16 +68,8 @@
     color: gray;
 }
 
-
-
-
-
-
-
-
-
 .headerLoginButtonBlock {
-    margin-left: 500px;
+    margin-left: 490px;
     display: flex;
 }
 
@@ -92,8 +84,8 @@
 }
 
 .headerLoginButtonList svg {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     color: gray;
 }
 
@@ -101,12 +93,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
 .loginButtonsItems img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+
+.loginButtonsItems a {
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: #ebecee;
+    text-decoration: none;
+    font-weight: 600;
+    color: gray;
+}
+
+.loginButtonsItems a:active {
+    text-decoration: none;
+    font-weight: 600;
+    color: gray;
+}
+
+.loginButtonsItems a:hover {
+    background-color: #dfe6ed
 }
 

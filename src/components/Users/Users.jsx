@@ -5,6 +5,7 @@ import s from "./Users.module.css";
 import {MdOutlinePhotoCamera} from "react-icons/md";
 import {IoPersonAddSharp, IoPersonRemoveSharp} from "react-icons/io5";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 const Users = (props) => {
 
@@ -39,17 +40,37 @@ const Users = (props) => {
                                         </div>
                                     </NavLink>
 
-
                                     <div className={s.friendButton}>
                                         {u.followed
                                             ? <button onClick={() => {
-                                                props.unfollow(u.id)
+                                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                                    withCredentials: true,
+                                                    headers: {
+                                                        "API-KEY": '9ba4d78e-4f34-47ac-8b5f-12c640cd08f8'
+                                                    }
+                                                })
+                                                    .then(res => {
+                                                        if (res.data.resultCode === 0) {
+                                                            props.unfollow(u.id)
+                                                        }
+                                                    })
                                             }}><IoPersonRemoveSharp/></button>
                                             : <button onClick={() => {
-                                                props.follow(u.id)
+                                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                                    withCredentials: true,
+                                                    headers: {
+                                                        "API-KEY": '9ba4d78e-4f34-47ac-8b5f-12c640cd08f8'
+                                                    }
+                                                })
+                                                    .then(res => {
+                                                        if (res.data.resultCode === 0) {
+                                                            props.follow(u.id)
+                                                        }
+                                                    })
                                             }}><IoPersonAddSharp/></button>
                                         }
                                     </div>
+
                                 </div>
                             </div>
                         </div>

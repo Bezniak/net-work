@@ -17,7 +17,10 @@ class UsersContainer extends Component {
 
     componentDidMount() {
         this.props.toggleFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
+            {
+                withCredentials: true,
+            })
             .then(response => {
                 this.props.toggleFetching(false)
                 this.props.setUsers(response.data.items);
@@ -31,7 +34,10 @@ class UsersContainer extends Component {
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.toggleFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
+            {
+                withCredentials: true,
+            })
             .then(response => {
                 this.props.toggleFetching(false)
                 this.props.setUsers(response.data.items);
@@ -72,30 +78,6 @@ function mapState(state) {
         isFetching: state.usersPage.isFetching,
     }
 }
-
-// function mapDispatch(dispatch) {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId));
-//         },
-//         unfollow: (userId) => {
-//             dispatch(unfollowAC(userId));
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersAC(users));
-//         },
-//         setCurrentPage: (pageNumber) => {
-//             dispatch(setCurrentPageAC(pageNumber));
-//         },
-//         setTotalUsersCount: (totalCount) => {
-//             dispatch(setUsersTotalCountAC(totalCount))
-//         },
-//         toggleIsFetching: (isFetching) => {
-//             dispatch(toggleFetchingAC(isFetching))
-//         }
-//     }
-// }
-
 
 export default connect(mapState, {
     follow,

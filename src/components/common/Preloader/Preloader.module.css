@@ -5,9 +5,22 @@
 /*    transform: translate(-50%, -50%);*/
 /*}*/
 
+/*.preloader {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    height: 100vh;*/
+/*}*/
+
+
 .preloader {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+.preloader img {
+    width: 100px;
+    height: 100px;
 }
