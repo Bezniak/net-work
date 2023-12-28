@@ -42,22 +42,28 @@ const Users = (props) => {
 
                                     <div className={s.friendButton}>
                                         {u.followed
-                                            ? <button onClick={() => {
+                                            ? <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                                      onClick={() => {
+                                                props.toggleFollowingProgress(true, u.id);
                                                 followAPI.unfollow(u.id)
                                                     .then(data => {
                                                         if (data.resultCode === 0) {
                                                             props.unfollow(u.id)
                                                         }
+                                                        props.toggleFollowingProgress(false, u.id);
                                                     })
-                                            }}><IoPersonRemoveSharp/></button>
-                                            : <button onClick={() => {
+                                            }}><IoPersonRemoveSharp style={props.followingInProgress.some(id => id === u.id) ? {color: "gray"} : ''}/></button>
+                                            : <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                                      onClick={() => {
+                                                props.toggleFollowingProgress(true, u.id);
                                                 followAPI.follow(u.id)
                                                     .then(data => {
                                                         if (data.resultCode === 0) {
                                                             props.follow(u.id)
                                                         }
+                                                        props.toggleFollowingProgress(false, u.id);
                                                     })
-                                            }}><IoPersonAddSharp/></button>
+                                            }}><IoPersonAddSharp style={props.followingInProgress.some(id => id === u.id) ? {color: "gray"} : ''}/></button>
                                         }
                                     </div>
 
