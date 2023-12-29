@@ -109,7 +109,7 @@ export const getUsers = (currentPage, pageSize) => (dispatch) => {
         })
 }
 
-export const pageChangeTC = (pageNumber, pageSize) => (dispatch) => {
+export const pageChange = (pageNumber, pageSize) => (dispatch) => {
     dispatch(setCurrentPage(pageNumber));
     dispatch(toggleFetching(true));
     usersAPI.getUsers(pageNumber, pageSize)

@@ -2,7 +2,8 @@ import {connect} from "react-redux";
 import React, {Component} from "react";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import {follow, getUsers, pageChangeTC, unfollow} from "../../redux/users-reducer";
+import {follow, getUsers, pageChange, unfollow} from "../../redux/users-reducer";
+import {withAuthRedirect} from "../common/hoc/withAuthRedirect";
 
 
 class UsersContainer extends Component {
@@ -12,7 +13,7 @@ class UsersContainer extends Component {
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.pageChangeTC(pageNumber, this.props.pageSize)
+        this.props.pageChange(pageNumber, this.props.pageSize)
     }
 
 
@@ -49,9 +50,11 @@ function mapState(state) {
     }
 }
 
+const withRedirect = withAuthRedirect(UsersContainer)
+
 export default connect(mapState, {
     unfollow,
     follow,
     getUsers,
-    pageChangeTC,
-})(UsersContainer)
+    pageChange,
+})(withRedirect)
