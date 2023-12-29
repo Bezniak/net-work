@@ -1,4 +1,4 @@
-import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialogs-reducer";
+import {sendMessage, updateNewMessageBody} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 
@@ -6,19 +6,8 @@ import {connect} from "react-redux";
 const mapState = (state) => {
     return {
         dialogsPage: state.dialogsPage,
+        isAuth: state.auth.isAuth,
     }
 }
 
-const mapDispatch = (dispatch) => {
-    return {
-        updateNewMessageBody: (body) => {
-            dispatch(updateNewMessageBodyAC(body))
-        },
-        sendMessage: () => {
-            dispatch(sendMessageAC());
-        },
-    }
-}
-
-
-export const DialogsContainer = connect(mapState, mapDispatch)(Dialogs)
+export const DialogsContainer = connect(mapState, {updateNewMessageBody, sendMessage})(Dialogs)

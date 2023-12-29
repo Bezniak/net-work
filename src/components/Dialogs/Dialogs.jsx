@@ -2,9 +2,11 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
+import {Navigate, NavLink} from "react-router-dom";
+import {updateNewMessageBody} from "../../redux/dialogs-reducer";
 
 
-const   Dialogs = (props) => {
+const Dialogs = (props) => {
 
 
     let dialogsElement = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} key={d.id}/>)
@@ -21,17 +23,17 @@ const   Dialogs = (props) => {
         props.sendMessage();
     }
 
+    if (!props.isAuth) return <Navigate to='/login'/>
+
     return (
         <div>
             <div className={s.dialogs}>
                 <div className={s.dialogsItem}>
                     {dialogsElement}
                 </div>
-
                 <div className={s.messages}>
                     {messagesElement}
                 </div>
-
             </div>
             <div className={s.textareaBlock}>
                 <textarea className='textarea'
@@ -39,13 +41,11 @@ const   Dialogs = (props) => {
                           id="newMessage"
                           placeholder='Wright your message'
                           value={newMessageBody}
-                          onChange={onNewMessageChange}
-                />
+                          onChange={onNewMessageChange}/>
                 <button onClick={onSendMessageClick} className='btn'>Send</button>
             </div>
         </div>
     )
-        ;
 };
 
 export default Dialogs;
