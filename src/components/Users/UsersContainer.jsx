@@ -2,44 +2,17 @@ import {connect} from "react-redux";
 import React, {Component} from "react";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import {
-    follow,
-    setCurrentPage,
-    setTotalUsersCount,
-    setUsers,
-    toggleFetching, toggleFollowingProgress,
-    unfollow
-} from "../../redux/users-reducer";
-import {usersAPI} from "../../api/api";
+import {follow, getUsers, pageChangeTC, unfollow} from "../../redux/users-reducer";
 
 
 class UsersContainer extends Component {
 
     componentDidMount() {
-        this.props.toggleFetching(true)
-
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(data => {
-                this.props.toggleFetching(false)
-                this.props.setUsers(data.items);
-                this.props.setTotalUsersCount(data.totalCount);
-            })
-            .catch(error => {
-                alert(`Error occurred: ${error}`);
-            })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.setCurrentPage(pageNumber);
-        this.props.toggleFetching(true)
-        usersAPI.getUsers(pageNumber, this.props.pageSize)
-            .then(data => {
-                this.props.toggleFetching(false)
-                this.props.setUsers(data.items);
-            })
-            .catch(error => {
-                alert(`Error occurred: ${error}`);
-            })
+        this.props.pageChangeTC(pageNumber, this.props.pageSize)
     }
 
 
@@ -55,7 +28,6 @@ class UsersContainer extends Component {
                                unfollow={this.props.unfollow}
                                follow={this.props.follow}
                                users={this.props.users}
-                               toggleFollowingProgress={this.props.toggleFollowingProgress}
                                followingInProgress={this.props.followingInProgress}
                         />
                     )
@@ -78,11 +50,8 @@ function mapState(state) {
 }
 
 export default connect(mapState, {
-    follow,
     unfollow,
-    setUsers,
-    setCurrentPage,
-    setTotalUsersCount,
-    toggleFetching,
-    toggleFollowingProgress,
+    follow,
+    getUsers,
+    pageChangeTC,
 })(UsersContainer)

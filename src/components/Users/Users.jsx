@@ -5,7 +5,6 @@ import s from "./Users.module.css";
 import {MdOutlinePhotoCamera} from "react-icons/md";
 import {IoPersonAddSharp, IoPersonRemoveSharp} from "react-icons/io5";
 import {NavLink} from "react-router-dom";
-import {followAPI} from "../../api/api";
 
 const Users = (props) => {
 
@@ -44,26 +43,17 @@ const Users = (props) => {
                                         {u.followed
                                             ? <button disabled={props.followingInProgress.some(id => id === u.id)}
                                                       onClick={() => {
-                                                props.toggleFollowingProgress(true, u.id);
-                                                followAPI.unfollow(u.id)
-                                                    .then(data => {
-                                                        if (data.resultCode === 0) {
-                                                            props.unfollow(u.id)
-                                                        }
-                                                        props.toggleFollowingProgress(false, u.id);
-                                                    })
-                                            }}><IoPersonRemoveSharp style={props.followingInProgress.some(id => id === u.id) ? {color: "gray"} : ''}/></button>
+                                                          props.unfollow(u.id)
+                                                      }}>
+                                                <IoPersonRemoveSharp
+                                                    style={props.followingInProgress.some(id => id === u.id) ? {color: "gray"} : ''}/>
+                                            </button>
                                             : <button disabled={props.followingInProgress.some(id => id === u.id)}
                                                       onClick={() => {
-                                                props.toggleFollowingProgress(true, u.id);
-                                                followAPI.follow(u.id)
-                                                    .then(data => {
-                                                        if (data.resultCode === 0) {
-                                                            props.follow(u.id)
-                                                        }
-                                                        props.toggleFollowingProgress(false, u.id);
-                                                    })
-                                            }}><IoPersonAddSharp style={props.followingInProgress.some(id => id === u.id) ? {color: "gray"} : ''}/></button>
+                                                          props.follow(u.id)
+                                                      }}><IoPersonAddSharp
+                                                style={props.followingInProgress.some(id => id === u.id) ? {color: "gray"} : ''}/>
+                                            </button>
                                         }
                                     </div>
 

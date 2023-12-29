@@ -1,43 +1,70 @@
 import React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { CgProfile } from 'react-icons/cg';
+import { LuNewspaper } from 'react-icons/lu';
+import { TbUsersGroup } from 'react-icons/tb';
+import { FiMessageCircle } from 'react-icons/fi';
+import { MdOutlineLibraryMusic } from 'react-icons/md';
+import { IoSettingsOutline } from 'react-icons/io5';
 import s from './Navbar.module.css';
-import {NavLink} from "react-router-dom";
-import {CgProfile} from "react-icons/cg";
-import {LuNewspaper} from "react-icons/lu";
-import {TbUsersGroup} from "react-icons/tb";
-import {FiMessageCircle} from "react-icons/fi";
-import {MdOutlineLibraryMusic} from "react-icons/md";
-import {IoSettingsOutline} from "react-icons/io5";
-
 
 const Navbar = () => {
+    const navigate = useNavigate();
+
+    const handleNavLinkClick = (path) => {
+        navigate(path);
+    };
+
     return (
         <nav className={s.nav}>
-
             <ul className={s.navBlock}>
                 <li>
-                    <CgProfile/>
-                    <NavLink to="/profile" className={({isActive}) => (isActive ? s.active : '')}>Profile</NavLink>
+                    <div onClick={() => handleNavLinkClick('/profile')}>
+                        <CgProfile className={s.svg} />
+                    </div>
+                    <NavLink to="/profile" className={({ isActive }) => (isActive ? s.active : '')}>
+                        Profile
+                    </NavLink>
                 </li>
                 <li>
-                    <TbUsersGroup/>
-                    <NavLink to="/users" className={({isActive}) => (isActive ? s.active : '')}>Users</NavLink>
+                    <div onClick={() => handleNavLinkClick('/users')}>
+                        <TbUsersGroup className={s.svg} />
+                    </div>
+                    <NavLink to="/users" className={({ isActive }) => (isActive ? s.active : '')}>
+                        Users
+                    </NavLink>
                 </li>
                 <li>
-                    <FiMessageCircle/>
-                    <NavLink to="/dialogs" className={({isActive}) => (isActive ? s.active : '')}>Messages</NavLink>
+                    <div onClick={() => handleNavLinkClick('/dialogs')}>
+                        <FiMessageCircle className={s.svg} />
+                    </div>
+                    <NavLink to="/dialogs" className={({ isActive }) => (isActive ? s.active : '')}>
+                        Messages
+                    </NavLink>
                 </li>
                 <li>
-                    <LuNewspaper/>
-                    <NavLink to="/news" className={({isActive}) => (isActive ? s.active : '')}>News</NavLink>
+                    <div onClick={() => handleNavLinkClick('/news')}>
+                        <LuNewspaper className={s.svg} />
+                    </div>
+                    <NavLink to="/news" className={({ isActive }) => (isActive ? s.active : '')}>
+                        News
+                    </NavLink>
                 </li>
                 <li>
-                    <MdOutlineLibraryMusic/>
-                    <NavLink to="/music" className={({isActive}) => (isActive ? s.active : '')}>Music</NavLink>
+                    <div onClick={() => handleNavLinkClick('/music')}>
+                        <MdOutlineLibraryMusic className={s.svg} />
+                    </div>
+                    <NavLink to="/music" className={({ isActive }) => (isActive ? s.active : '')}>
+                        Music
+                    </NavLink>
                 </li>
                 <li>
-                    <IoSettingsOutline/>
-                    <NavLink to="/settings"
-                             className={({isActive}) => (isActive ? s.active : '')}>Settings</NavLink>
+                    <div onClick={() => handleNavLinkClick('/settings')}>
+                        <IoSettingsOutline className={s.svg} />
+                    </div>
+                    <NavLink to="/settings" className={({ isActive }) => (isActive ? s.active : '')}>
+                        Settings
+                    </NavLink>
                 </li>
             </ul>
         </nav>

@@ -8,7 +8,6 @@ import {CgMenuGridO} from "react-icons/cg";
 import {IoIosSearch} from "react-icons/io";
 import {CommonSearchInput} from "../common/CommonSearchInput/CommonSearchInput";
 import {MdKeyboardArrowDown} from "react-icons/md";
-import Preloader from "../common/Preloader/Preloader";
 
 const Header = (props) => {
 
