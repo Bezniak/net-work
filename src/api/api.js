@@ -10,7 +10,10 @@ const instance = axios.create({
 })
 
 export const authAPI = {
-
+    authMe() {
+        return instance.get(`auth/me`)
+            .then(response => response.data)
+    }
 }
 
 export const usersAPI = {
@@ -39,6 +42,4 @@ export const followAPI = {
     },
 }
 
-export const securityAPI = {
-
-}
+export const securityAPI = {}

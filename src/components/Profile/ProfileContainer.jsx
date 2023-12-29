@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {setUserProfile} from '../../redux/profile-reducer';
+import {getUserProfile} from '../../redux/profile-reducer';
 import Profile from "./Profile";
 import {useParams} from "react-router-dom";
-import {profileAPI} from "../../api/api";
 
 
 const ProfileContainer = (props) => {
@@ -11,13 +10,7 @@ const ProfileContainer = (props) => {
     const {id = 28698} = useParams();
 
     useEffect(() => {
-        profileAPI.getUserProfile(id)
-            .then(data => {
-                props.setUserProfile(data);
-            });
-        return () => {
-
-        }
+        props.getUserProfile(id)
     }, [id]);
 
 
@@ -35,4 +28,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {setUserProfile})(ProfileContainer);
+export default connect(mapStateToProps, {getUserProfile})(ProfileContainer);
