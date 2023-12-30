@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {getUserProfile} from '../../redux/profile-reducer';
+import {getUserProfile, updateStatus} from '../../redux/profile-reducer';
 import Profile from "./Profile";
-import {Navigate, useParams} from "react-router-dom";
-import {withAuthRedirect} from "../common/hoc/withAuthRedirect";
+import {useParams} from "react-router-dom";
 import {compose} from "redux";
 
 
@@ -16,11 +15,15 @@ const ProfileContainer = (props) => {
     }, [id]);
 
 
-    if (!props.isAuth) return <Navigate to='/login'/>
 
     return (
         <div>
-            <Profile {...props} profile={props.profile} users={props.users}/>
+            <Profile {...props}
+                     profile={props.profile}
+                     users={props.users}
+                     profileStatus={props.profileStatus}
+                     updateStatus={props.updateStatus}
+            />
         </div>
     )
 }
@@ -29,10 +32,12 @@ const ProfileContainer = (props) => {
 function mapStateToProps(state) {
     return {
         profile: state.profilePage.profile,
+        isFetching: state.profilePage.isFetching,
+        profileStatus: state.profilePage.profileStatus,
     };
 }
 
 export default compose(
-    connect(mapStateToProps, {getUserProfile}),
-    withAuthRedirect
+    connect(mapStateToProps, {getUserProfile, updateStatus}),
+    // withAuthRedirect
 )(ProfileContainer)

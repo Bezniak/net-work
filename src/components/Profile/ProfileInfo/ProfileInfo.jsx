@@ -4,12 +4,16 @@ import Preloader from "../../common/Preloader/Preloader";
 import {MdOutlineInfo, MdOutlineWorkOutline} from "react-icons/md";
 import {BsPersonCheck, BsTelephone} from "react-icons/bs";
 import {FaChevronDown} from "react-icons/fa";
+import ProfileStatus from "./ProfileStatus";
+import {updateStatus} from "../../../redux/profile-reducer";
 
 const ProfileInfo = (props) => {
 
     if (!props.profile) {
         return <Preloader/>
     }
+
+    // if (props.isFetching) return <Preloader/>
 
     return (
         <div>
@@ -28,7 +32,7 @@ const ProfileInfo = (props) => {
 
                     <div className={s.profileAbout}>
                         <div className={s.profileUserName}>{props.profile.fullName}</div>
-                        <div className={s.profileAboutMe}>{props.profile.aboutMe}</div>
+                        <ProfileStatus profileStatus={props.profileStatus} updateStatus={props.updateStatus}/>
 
 
                         <div className={s.profileAboutButton}>
