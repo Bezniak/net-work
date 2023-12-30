@@ -4,6 +4,7 @@ import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import {follow, getUsers, pageChange, unfollow} from "../../redux/users-reducer";
 import {withAuthRedirect} from "../common/hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 class UsersContainer extends Component {
@@ -50,11 +51,7 @@ function mapState(state) {
     }
 }
 
-const withRedirect = withAuthRedirect(UsersContainer)
-
-export default connect(mapState, {
-    unfollow,
-    follow,
-    getUsers,
-    pageChange,
-})(withRedirect)
+export default compose(
+    connect(mapState, {unfollow, follow, getUsers, pageChange}),
+    withAuthRedirect
+)(UsersContainer)
