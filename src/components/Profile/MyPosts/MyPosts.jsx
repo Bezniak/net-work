@@ -1,42 +1,21 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
+import DialogsForm from "../../common/DialogsForm/DialogsForm";
 
 
 const MyPosts = (props) => {
 
     let postsElement = props.posts.map(p => <Post message={p.message} likeCounts={p.likeCounts} key={p.id}/>)
 
-    const newPostElement = React.createRef();
-
-    const onAddPost = () => {
-        props.addPost();
+    const onAddPost = (data) => {
+        props.addPost(data);
     }
-
-    const onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text);
-    }
-
 
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
-            <div>
-                <div>
-                    <textarea className='textarea'
-                              ref={newPostElement}
-                              name="newPost"
-                              value={props.newPostText}
-                              onChange={onPostChange}
-                              id="newPost"
-                              placeholder='Say something...'
-                    />
-                </div>
-                <div>
-                    <button className='btn' onClick={onAddPost}>Add post</button>
-                </div>
-            </div>
+            <DialogsForm onSend={onAddPost} submit={'Add post'}/>
             <div className={s.posts}>
                 {postsElement}
             </div>
@@ -45,3 +24,4 @@ const MyPosts = (props) => {
 };
 
 export default MyPosts;
+

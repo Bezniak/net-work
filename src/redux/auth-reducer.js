@@ -39,5 +39,14 @@ export const getAuthUserData = () => (dispatch) => {
         })
 }
 
+export const login = (data) => (dispatch) => {
+    authAPI.login()
+        .then(res => {
+            if (res.data.resultCode === 0) {
+
+            }
+        })
+}
+
 
 
