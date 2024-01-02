@@ -1,6 +1,9 @@
 import React from 'react';
 import s from './Login.module.css';
 import {useForm} from 'react-hook-form';
+import {connect} from 'react-redux';
+import {login, logout} from '../../redux/auth-reducer';
+import {Navigate} from "react-router-dom";
 
 const Login = (props) => {
     const {
@@ -13,9 +16,14 @@ const Login = (props) => {
     });
 
     const onSubmit = (data) => {
-        console.log(JSON.stringify(data));
+        props.login(data.email, data.password, data.rememberMe);
+        console.log(data.email, data.password, data.rememberMe);
         reset();
     };
+
+    if (props.isAuth) {
+        return <Navigate to={'/profile'}/>
+    }
 
     return (
         <div className={s.formContainer}>
@@ -28,8 +36,8 @@ const Login = (props) => {
                             {...register('email', {
                                 required: 'This field is required!',
                                 pattern: {
-                                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                    message: 'Enter valid email!',
+                                    value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                                    message: 'Enter a valid email!',
                                 },
                             })}
                             placeholder={'Login'}
@@ -77,4 +85,10 @@ const Login = (props) => {
     );
 };
 
-export default Login;
+const mapState = (state) => {
+    return {
+        isAuth: state.auth.isAuth,
+    }
+}
+
+export default connect(mapState, {login, logout})(Login);
