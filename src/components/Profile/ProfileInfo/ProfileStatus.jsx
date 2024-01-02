@@ -4,7 +4,7 @@ import s from "./ProfileInfo.module.css";
 const ProfileStatus = (props) => {
 
     const [editMode, setEditMode] = useState(false);
-    const [statusValue, setStatusValue] = useState(!props.status);
+    const [statusValue, setStatusValue] = useState(props.status);
 
 
     function onStatusChange(e) {
@@ -14,7 +14,7 @@ const ProfileStatus = (props) => {
     function saveStatus() {
         props.updateStatus(statusValue)
         setEditMode(false)
-        setStatusValue('')
+        // setStatusValue('')
     }
 
     return (
@@ -23,7 +23,7 @@ const ProfileStatus = (props) => {
                 <span className={s.profileAboutMe}
                       onDoubleClick={() => setEditMode(true)}
                 >
-                    {props.status || "------"}
+                    {props.status || "No status"}
                 </span>
             }
 
