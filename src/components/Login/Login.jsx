@@ -17,7 +17,6 @@ const Login = (props) => {
 
     const onSubmit = (data) => {
         props.login(data.email, data.password, data.rememberMe);
-        console.log(data.email, data.password, data.rememberMe);
         reset();
     };
 
@@ -92,3 +91,6 @@ const mapState = (state) => {
 }
 
 export default connect(mapState, {login, logout})(Login);
+
+
+
