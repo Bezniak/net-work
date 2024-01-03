@@ -1,29 +1,43 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './Header.module.css';
-import {IoLogoElectron, IoSettingsOutline} from "react-icons/io5";
-import {NavLink, useNavigate} from "react-router-dom";
+import {IoLogoElectron} from "react-icons/io5";
+import {NavLink} from "react-router-dom";
 import {GrNotification} from "react-icons/gr";
 import {CiMusicNote1} from "react-icons/ci";
 import {CgMenuGridO} from "react-icons/cg";
 import {IoIosSearch} from "react-icons/io";
 import {CommonSearchInput} from "../common/CommonSearchInput/CommonSearchInput";
 import {MdKeyboardArrowDown} from "react-icons/md";
-import Settings from "../Settings/Settings";
-import {MenuButton} from "./MenuButton";
+import MenuButton from "./MenuButton";
+import {FiLogOut} from "react-icons/fi";
 
 const Header = (props) => {
 
 
-    const [isMenuOpen, setMenuOpen] = useState(false);
+    const [isMenuButtonVisible, setIsMenuButtonVisible] = useState(false);
 
-    const handleMenuToggle = () => {
-        setMenuOpen(!isMenuOpen);
+    const menuButtonVisibilityHandler = () => {
+        setIsMenuButtonVisible(!isMenuButtonVisible);
     };
 
-    const handleOverlayClick = () => {
-        setMenuOpen(false);
+    const handleClickOutside = (event) => {
+        const menuButton = document.getElementById('menuButton');
+        if (menuButton && !menuButton.contains(event.target)) {
+            setIsMenuButtonVisible(false);
+        }
     };
 
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutside, true);
+        return () => {
+            document.removeEventListener('click', handleClickOutside, true);
+        };
+    }, []);
+
+
+    // if (!props.profile) {
+    //     return <Preloader/>
+    // }
 
     return (
         <header className={s.header}>
@@ -49,26 +63,31 @@ const Header = (props) => {
             <div className={s.headerLoginButtonBlock}>
                 <ul className={s.headerLoginButtonList}>
                     <li>
-                        <CgMenuGridO/>
+                        <div className={s.navLinkBlock} onClick={props.logout}>
+                            <div><FiLogOut/></div>
+                        </div>
                     </li>
-                    <li>
-                        <div className={s.loginButtonsItems} onClick={handleMenuToggle}>
-                            {props.login ? props.login : <NavLink to={'/login'}> Login </NavLink>}
-                            <MdKeyboardArrowDown/>
+                    <li className={s.headerLoginButtonMenu} id="menuButton">
+                        <div className={s.loginButtonsItems}>
+                            {props.login ? (props.profile && props.profile.photos && props.profile.photos.small ? (
+                                <img src={props.profile.photos.small} alt="ava"/>
+                            ) : (
+                                <div>No photo available</div>
+                            )) : (
+                                <NavLink to={'/login'}>Login</NavLink>
+                            )}
+                            <MdKeyboardArrowDown onClick={menuButtonVisibilityHandler}/>
                         </div>
                     </li>
                 </ul>
             </div>
 
-            {isMenuOpen && (
-                <div className={s.overlay} onClick={handleOverlayClick}>
-                    <MenuButton name={props.name} logout={props.logout}/>
-                </div>
-            )}
+            {isMenuButtonVisible && props.profile && props.profile.photos &&
+                <MenuButton name={props.profile.fullName} img={props.profile.photos.small}/>
+            }
+
         </header>
-    )
+    );
 };
 
-
 export default Header;
-

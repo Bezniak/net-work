@@ -1,38 +1,51 @@
-import {NavLink, useNavigate} from "react-router-dom";
-import s from "./Header.module.css";
-import {IoSettingsOutline} from "react-icons/io5";
-import React from "react";
-import {FiLogOut} from "react-icons/fi";
+import React from 'react';
+import s from './MenuButton.module.css'
+import {NavLink} from "react-router-dom";
+import {IoAddCircleOutline, IoColorPaletteOutline, IoSettingsOutline} from "react-icons/io5";
+import {IoIosHelpCircleOutline} from "react-icons/io";
+import {FaChevronRight} from "react-icons/fa6";
+import {FaRegUser} from "react-icons/fa";
 
-export const MenuButton = (props) => {
-
-    const navigate = useNavigate();
-
-    const handleNavLinkClick = (path) => {
-        navigate(path);
-    };
-
+const MenuButton = (props) => {
     return (
-        <ul className={s.menuButton}>
-            <li onClick={() => handleNavLinkClick('/profile')}>
-                <img src={''} alt="ava"/>
-                {props.name}
-            </li>
-            <li>
-                <div onClick={() => handleNavLinkClick('/settings')}>
-                    <IoSettingsOutline className={s.svg}/>
-                </div>
-                <NavLink to="/settings" className={({isActive}) => (isActive ? s.active : '')}>
-                    Settings
-                </NavLink>
-            </li>
-            <li>Theme</li>
-            <li>Help</li>
-            <li onClick={props.logout}>
-                <FiLogOut/>
-                <NavLink to='/login'>Log out</NavLink>
-            </li>
-            <li>Add account</li>
-        </ul>
-    )
+        <div className={s.menuButtonBlock}>
+            <ul className={s.menuButtonList}>
+                <li>
+                    <NavLink to="/profile" className={`${s.menuButtonProfile} ${s.navLinkBlock}`}>
+                        <div>
+                            {props.img ? (<img src={props.img} alt="ava"/>) : <FaRegUser/>}
+
+                        </div>
+                        <div>
+                            <div>{props.name}</div>
+                        </div>
+                        <div className={s.menuButtonSvg}><FaChevronRight/></div>
+                    </NavLink>
+                </li>
+                <hr/>
+                <li>
+                    <NavLink to='/settings' className={s.navLinkBlock}>
+                        <IoSettingsOutline/>
+                        Settings
+                    </NavLink>
+                </li>
+                <li>
+                    <IoColorPaletteOutline/>
+                    Theme
+                </li>
+                <li>
+                    <IoIosHelpCircleOutline/>
+                    Help
+                </li>
+
+                <hr/>
+                <li>
+                    <IoAddCircleOutline/>
+                    Add account
+                </li>
+            </ul>
+        </div>
+    );
 };
+
+export default MenuButton;

@@ -1,0 +1,87 @@
+.menuButtonBlock {
+    position: absolute;
+    top: 75px;
+    right: 250px;
+    width: 250px;
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 99;
+    box-shadow: 0 20px 40px 0 rgba(0,0,0,.3);
+}
+
+
+.menuButtonProfile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-left: 15px;
+}
+
+.menuButtonSvg {
+    padding-left: 95px;
+    fill: gray;
+}
+
+.menuButtonList {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    flex-wrap: nowrap;
+    padding: 0;
+}
+
+.menuButtonList > li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.menuButtonList > li:hover {
+    background-color: #dfe6ed;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menuButtonList a {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menuButtonList a:active {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    color: black;
+}
+
+.menuButtonList a:visited {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    color: black;
+}
+
+.menuButtonList svg {
+    width: 20px;
+    height: 20px;
+    color: #447ab9;
+    pointer-events: none;
+    margin: 0 8px 0 0;
+    padding: 0;
+}
+
+.menuButtonList hr {
+    color: gray;
+    width: 100%;
+    height: 1px;
+}
+
+
+.navLinkBlock img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}

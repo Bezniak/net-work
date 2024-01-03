@@ -17,6 +17,7 @@ const HeaderContainer = (props) => {
 
 function mapState(state) {
     return {
+        profile: state.profilePage.profile,
         login: state.auth.login,
         email: state.auth.email,
         userId: state.auth.userId,
