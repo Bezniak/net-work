@@ -5,7 +5,9 @@ import DialogsForm from "../../common/DialogsForm/DialogsForm";
 
 const MyPosts = React.memo((props) => {
 
-    let postsElement = props.posts.map(p => <Post message={p.message} likeCounts={p.likeCounts} key={p.id}/>)
+    let postsElement = [...props.posts]
+        .reverse()
+        .map(p => <Post message={p.message} likeCounts={p.likeCounts} key={p.id}/>)
 
     const onAddPost = (data) => {
         props.addPost(data);

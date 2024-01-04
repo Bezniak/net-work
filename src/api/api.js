@@ -7,7 +7,7 @@ const instance = axios.create({
     headers: {
         "API-KEY": "9ba4d78e-4f34-47ac-8b5f-12c640cd08f8"
     },
-})
+});
 
 export const authAPI = {
     me() {
