@@ -7,7 +7,6 @@ const DialogsForm = ({ onSend, submit }) => {
 
     const onSubmit = (data) => {
         onSend(data.message);
-        console.log(JSON.stringify(data));
         reset();
     };
 

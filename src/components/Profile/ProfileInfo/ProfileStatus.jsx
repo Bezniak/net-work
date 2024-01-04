@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from "./ProfileInfo.module.css";
 
 const ProfileStatus = (props) => {
@@ -7,13 +7,22 @@ const ProfileStatus = (props) => {
     const [statusValue, setStatusValue] = useState(props.status);
 
 
-    function onStatusChange(e) {
+    useEffect(() => {
+        setStatusValue(props.status)
+    }, [props.status]);
+
+
+    const onStatusChange = (e) => {
         setStatusValue(e.target.value);
     }
 
-    function saveStatus() {
-        props.updateStatus(statusValue)
+    const activateEditMode = () => {
+        setEditMode(true);
+    }
+
+    const saveStatus = () => {
         setEditMode(false)
+        props.updateStatus(statusValue)
         // setStatusValue('')
     }
 
@@ -21,7 +30,7 @@ const ProfileStatus = (props) => {
         <>
             {!editMode &&
                 <span className={s.profileAboutMe}
-                      onDoubleClick={() => setEditMode(true)}
+                      onDoubleClick={activateEditMode}
                 >
                     {props.status || "No status"}
                 </span>
