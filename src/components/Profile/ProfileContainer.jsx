@@ -9,7 +9,7 @@ import {withAuthRedirect} from "../common/hoc/withAuthRedirect";
 
 const ProfileContainer = (props) => {
 
-    const {id = 28698} = useParams();
+    const {id = props.authorizedUserId} = useParams();
 
     useEffect(() => {
         props.getUserProfile(id)
@@ -33,6 +33,8 @@ function mapStateToProps(state) {
     return {
         profile: state.profilePage.profile,
         status: state.profilePage.status,
+        authorizedUserId: state.auth.userId,
+        isAuth: state.auth.isAuth,
     };
 }
 

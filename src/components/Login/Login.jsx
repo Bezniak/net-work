@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {login, logout} from '../../redux/auth-reducer';
 import {Navigate} from "react-router-dom";
 
-const Login = (props) => {
+const Login = ({login, isAuth}) => {
     const {
         register,
         reset,
@@ -16,11 +16,11 @@ const Login = (props) => {
     });
 
     const onSubmit = (data) => {
-        props.login(data.email, data.password, data.rememberMe);
+        login(data.email, data.password, data.rememberMe);
         reset();
     };
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Navigate to={'/profile'}/>
     }
 
