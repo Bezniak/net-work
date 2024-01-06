@@ -8,7 +8,6 @@
 /* end ProfileInfoBlock */
 
 
-
 /* start ProfileInfoPhotoBackground */
 
 .noBackgroundPhoto {
@@ -22,8 +21,11 @@
 /* end  ProfileInfoPhotoBackground */
 
 
-
 /* start ProfilePhoto */
+
+.profilePhotoBlock {
+    /*position: relative;*/
+}
 
 .profilePhoto {
     position: absolute;
@@ -61,6 +63,7 @@
     left: 20px;
     z-index: 100;
 }
+
 
 .profileBlock {
     display: flex;
@@ -196,4 +199,10 @@
     background-color: #7e93a0;
 }
 
+
+.photoToolsHoverBlock {
+    /*position: absolute;*/
+    /*top: -70px;*/
+    /*left: 20px;*/
+}
 
