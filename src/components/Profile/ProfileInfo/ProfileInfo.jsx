@@ -4,7 +4,10 @@ import Preloader from "../../common/Preloader/Preloader";
 import {MdOutlineInfo, MdOutlineWorkOutline} from "react-icons/md";
 import {BsPersonCheck, BsTelephone} from "react-icons/bs";
 import {FaChevronDown} from "react-icons/fa";
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatus from "./ProfileInfoComponents/ProfileStatus";
+import {PiCamera} from "react-icons/pi";
+import {ProfilePhotoBackground} from "./ProfileInfoComponents/ProfileInfoPhotoBackgroung";
+import ProfilePhoto from "./ProfileInfoComponents/ProfilePhoto";
 
 const ProfileInfo = (props) => {
 
@@ -13,18 +16,22 @@ const ProfileInfo = (props) => {
     }
 
 
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            props.savePhoto(e.target.files[0]);
+        }
+    }
+
     return (
         <div>
             <div className={s.descriptionBlock}>
 
-                <div>
-                    {props.profile.photos.background
-                        ? <img src={props.profile.photos.background} alt="background"/>
-                        : <div className={s.noBackgroundPhoto}></div>
-                    }
-                </div>
+                    <ProfilePhotoBackground profile={props.profile}/>
+                    <ProfilePhoto profile={props.profile}/>
 
-                <img className={s.profilePhoto} src={props.profile.photos.large} alt="avatar"/>
+
+                {props.isOwner && <input type="file" className={s.photoInput} onChange={onMainPhotoSelected}/>}
+
 
                 <div className={s.profileBlock}>
 

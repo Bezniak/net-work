@@ -1,8 +1,15 @@
+/* start ProfileInfoBlock */
 .descriptionBlock {
     z-index: 1;
     position: relative;
 
 }
+
+/* end ProfileInfoBlock */
+
+
+
+/* start ProfileInfoPhotoBackground */
 
 .noBackgroundPhoto {
     position: relative;
@@ -12,6 +19,12 @@
     border-radius: 15px;
 }
 
+/* end  ProfileInfoPhotoBackground */
+
+
+
+/* start ProfilePhoto */
+
 .profilePhoto {
     position: absolute;
     z-index: 999;
@@ -20,6 +33,33 @@
     border-radius: 50%;
     top: 120px;
     left: 30px;
+    background-color: #ebecee;
+    border: 5px solid #fff;
+    fill: #9eb4c8;
+}
+
+.profilePhotoSVG {
+    position: absolute;
+    z-index: 999;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    top: 120px;
+    left: 30px;
+    background-color: #ebecee;
+    border: 5px solid #fff;
+    fill: #9eb4c8;
+}
+
+
+/* end  ProfilePhoto */
+
+
+.photoInput {
+    position: absolute;
+    top: 330px;
+    left: 20px;
+    z-index: 100;
 }
 
 .profileBlock {
