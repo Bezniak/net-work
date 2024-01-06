@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import s from "../ProfileInfo.module.css";
-import style from './PhotoToolsHover.module.css';
+import s from './ProfilePhoto.module.css';
 import {PiCamera} from "react-icons/pi";
-import {PhotoToolsHover} from "./PhotoToolsHover";
+import {PhotoToolsHover} from "../PhotoToolsHover/PhotoToolsHover";
 
 const ProfilePhoto = (props) => {
     const [isPhotoToolsVisible, setIsPhotoToolsVisible] = useState(false);
@@ -27,21 +26,16 @@ const ProfilePhoto = (props) => {
         return () => {
             clearTimeout(timeoutId);
         };
-    }, []);
+    }, [timeoutId]);
 
     return (
-        <div
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className={`${s.profilePhotoBlock} ${isPhotoToolsVisible ? style.active : ''}`}
-        >
-            {props.profile.photos.large ? (
-                <img className={s.profilePhoto} src={props.profile.photos.large} alt="avatar"/>
-            ) : (
-                <PiCamera className={s.profilePhotoSVG}/>
-            )}
+        <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            {props.profile.photos.large
+                ? (<img className={s.profilePhoto} src={props.profile.photos.large} alt="avatar"/>)
+                : (<PiCamera className={s.profilePhotoSVG}/>)
+            }
             {props.isOwner && isPhotoToolsVisible && (
-                <div className={s.photoToolsHoverBlock}>
+                <div>
                     <PhotoToolsHover savePhoto={props.savePhoto}/>
                 </div>
             )}

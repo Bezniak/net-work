@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import s from "../ProfileInfo.module.css";
+import s from "../../ProfileInfo.module.css";
 
 const ProfileStatus = (props) => {
 
@@ -23,7 +23,6 @@ const ProfileStatus = (props) => {
     const saveStatus = () => {
         setEditMode(false)
         props.updateStatus(statusValue)
-        // setStatusValue('')
     }
 
     return (

@@ -1,0 +1,23 @@
+.profilePhoto {
+    position: absolute;
+    z-index: 15;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    top: 120px;
+    left: 30px;
+    border: 5px solid #fff;
+}
+
+.profilePhotoSVG {
+    position: absolute;
+    z-index: 15;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    top: 120px;
+    left: 30px;
+    background-color: #ebecee;
+    border: 5px solid #fff;
+    fill: #9eb4c8;
+}

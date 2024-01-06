@@ -1,0 +1,56 @@
+
+.profileButtons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 20px;
+    gap: 12px;
+    list-style-type: none;
+}
+
+.profileButtons > li {
+    background-color: #e9f0f8;
+    padding: 7px 12px;
+    border-radius: 10px;
+}
+
+.profileButtons > li:hover {
+    cursor: pointer;
+    background-color: #7e93a0;
+}
+
+.profileButtons li:first-child {
+    background-color: #2a5885;
+    color: #fff;
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+}
+
+.profileButtons li:first-child:hover {
+    cursor: pointer;
+    background-color: #3b5998;
+
+}
+
+.profileButtons li:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    background-color: #e9f0f8;
+    color: #2a5885;
+}
+
+.profileButtons svg {
+    fill: #376fb0;
+    width: 20px;
+    height: 20px;
+
+}
+
+.profileButtons > li:hover {
+    cursor: pointer;
+    background-color: #7e93a0;
+}
+
+
