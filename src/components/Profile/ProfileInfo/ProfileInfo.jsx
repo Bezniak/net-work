@@ -36,7 +36,8 @@ const ProfileInfo = (props) => {
                     <div className={s.profileAbout}>
                         <div className={s.profileUserName}>{props.profile.fullName}</div>
                         <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
-                        <ProfileBriefInfo  profile={props.profile} isOwner={props.isOwner} saveProfile={props.saveProfile}/>
+                        <ProfileBriefInfo profile={props.profile} isOwner={props.isOwner}
+                                          saveProfile={props.saveProfile} errors={props.errors}/>
                     </div>
                     <ProfileButtonsBlock/>
                 </div>

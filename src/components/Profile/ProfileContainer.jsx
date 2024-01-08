@@ -27,6 +27,7 @@ const ProfileContainer = (props) => {
                      status={props.status}
                      updateStatus={props.updateStatus}
                      savePhoto={props.savePhoto}
+                     errors={props.errors}
             />
         </div>
     )
@@ -39,6 +40,7 @@ function mapStateToProps(state) {
         status: state.profilePage.status,
         authorizedUserId: state.auth.userId,
         isAuth: state.auth.isAuth,
+        errors: state.profilePage.errors,
     };
 }
 

@@ -7,6 +7,8 @@ const DELETE_POST = 'DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 const UPDATE_PROFILE_INFO = 'UPDATE_PROFILE_INFO';
 
+const SET_ERRORS = 'SET_ERRORS';
+
 
 let newPostId = 4;
 
@@ -18,6 +20,7 @@ const initialState = {
     ],
     profile: null,
     status: '',
+    errors: [],
 }
 export const profileReducer = (state = initialState, action) => {
 
@@ -60,6 +63,12 @@ export const profileReducer = (state = initialState, action) => {
                 profile: {...state.profile,}
             }
 
+        case SET_ERRORS:
+            return {
+                ...state,
+                errors: action.messages,
+            }
+
         default:
             return state
     }
@@ -74,6 +83,8 @@ const setStatus = (status) => ({type: SET_STATUS, status})
 
 export const deletePost = (postId) => ({type: DELETE_POST, postId})
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
+
+export const profileErrors = (messages) => ({type: SET_ERRORS, messages})
 
 
 export const getUserProfile = (userId) => async (dispatch) => {
@@ -107,6 +118,8 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
 
     if (res.data.resultCode === 0) {
         dispatch(getUserProfile(userId))
+    } else {
+        dispatch(profileErrors(res.data.messages))
     }
 }
 

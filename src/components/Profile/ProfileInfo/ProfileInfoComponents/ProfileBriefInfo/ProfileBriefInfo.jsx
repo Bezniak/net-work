@@ -32,6 +32,7 @@ const ProfileBriefInfo = (props) => {
             <span onClick={onMoreDetailOpen}> More details</span>
             {isMoreDetailsVisible && (editMode
                     ? <MoreDetailsInfoForm onMoreDetailClose={onMoreDetailClose}
+                                           errors={props.errors}
                                            profile={props.profile}
                                            initialValue={props.profile}
                                            isOwner={props.isOwner}
