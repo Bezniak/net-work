@@ -18,6 +18,24 @@
     position: absolute;
 }
 
+.editButton {
+    position: relative;
+    top: 48px;
+    left: 730px;
+    background-color: #e9f0f8;
+    color: #2a5885;
+    border: none;
+    outline: none;
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.editButton:hover {
+    cursor: pointer;
+    background-color: #7e93a0;
+}
+
 .closeIcon {
     position: relative;
     top: 10px;
@@ -32,6 +50,7 @@
 
 .closeIcon svg:hover {
     fill: red;
+    cursor: pointer;
 }
 
 .moreDetailWrapper {
@@ -111,6 +130,10 @@
 
 .detailsMainList span {
     color: black;
+}
+
+.detailsMainList span:hover {
+    text-decoration: none;
 }
 
 

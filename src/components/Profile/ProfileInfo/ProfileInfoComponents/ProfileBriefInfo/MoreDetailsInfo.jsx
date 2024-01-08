@@ -12,14 +12,15 @@ import {IoLogoYoutube} from "react-icons/io";
 import {GoLink} from "react-icons/go";
 
 export const MoreDetailsInfo = (props) => {
-    console.log(props.profile);
 
     return (
         <div className={s.moreDetailBlock}>
             <div className={s.moreDetailWrapper}>
+
                 <div className={s.closeButton}>
+                    {props.isOwner && <button className={s.editButton} onClick={props.goToEditMode}>Edit</button>}
                     <div className={s.closeIcon}>
-                    <IoClose onClick={props.onMoreDetailClose}/>
+                        <IoClose onClick={props.onMoreDetailClose}/>
                     </div>
                 </div>
                 <div className={s.photo}>
@@ -41,12 +42,12 @@ export const MoreDetailsInfo = (props) => {
                         <li>
                             <MdOutlineWorkOutline/>
                             <b>Looking for a job:</b>
-                            <span>{props.profile.lookingForAJob && "no"}</span>
+                            <span>{props.profile.lookingForAJob ? 'yes' : 'no'}</span>
                         </li>
                         <li>
                             <GiSkills/>
                             <b>My professional skills:</b>
-                            <span>{props.profile.lookingForAJobDescription && "no"}</span>
+                            <span>{props.profile.lookingForAJobDescription}</span>
                         </li>
                         <li>
                             <BsPersonLinesFill/>
@@ -64,35 +65,35 @@ export const MoreDetailsInfo = (props) => {
                     <ul className={s.contactsList}>
                         <li>
                             <BsGithub/>
-                            {props.profile.github && "no"}
+                            {props.profile.github}
                         </li>
                         <li>
                             <SlSocialVkontakte/>
-                            {props.profile.vk && "no"}
+                            {props.profile.vk}
                         </li>
                         <li>
                             <FaFacebook/>
-                            {props.profile.facebook && "no"}
+                            {props.profile.contacts.facebook}
                         </li>
                         <li>
                             <FaInstagram/>
-                            {props.profile.instagram && "no"}
+                            {props.profile.contacts.instagram}
                         </li>
                         <li>
                             <FaTwitter/>
-                            {props.profile.twitter && "no"}
+                            {props.profile.contacts.twitter}
                         </li>
                         <li>
                             <CgWebsite/>
-                            {props.profile.website && "no"}
+                            {props.profile.contacts.website}
                         </li>
                         <li>
                             <IoLogoYoutube/>
-                            {props.profile.youtube && "no"}
+                            {props.profile.contacts.youtube}
                         </li>
                         <li>
                             <GoLink/>
-                            {props.profile.mainLink && "no"}
+                            {props.profile.contacts.mainLink}
                         </li>
                     </ul>
                 </div>

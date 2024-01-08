@@ -2,11 +2,15 @@ import React, {useState} from 'react';
 import s from './ProfileBriefInfo.module.css';
 import {MdOutlineInfo, MdOutlineWorkOutline} from "react-icons/md";
 import {MoreDetailsInfo} from "./MoreDetailsInfo";
+import {MoreDetailsInfoForm} from "./MoreDetailsInfoForm";
 
 
 const ProfileBriefInfo = (props) => {
 
     const [isMoreDetailsVisible, setIsMoreDetailsVisible] = useState(false);
+
+    const [editMode, setEditMode] = useState(false);
+
 
     const onMoreDetailOpen = () => {
         setIsMoreDetailsVisible(true);
@@ -26,7 +30,19 @@ const ProfileBriefInfo = (props) => {
             }
             <MdOutlineInfo/>
             <span onClick={onMoreDetailOpen}> More details</span>
-            {isMoreDetailsVisible && <MoreDetailsInfo onMoreDetailClose={onMoreDetailClose} profile={props.profile}/>}
+            {isMoreDetailsVisible && (editMode
+                    ? <MoreDetailsInfoForm onMoreDetailClose={onMoreDetailClose}
+                                           profile={props.profile}
+                                           initialValue={props.profile}
+                                           isOwner={props.isOwner}
+                                           goToEditMode={() => setEditMode(false)}
+                                           saveProfile={props.saveProfile}/>
+                    : <MoreDetailsInfo onMoreDetailClose={onMoreDetailClose}
+                                       profile={props.profile}
+                                       isOwner={props.isOwner}
+                                       goToEditMode={() => setEditMode(true)}/>
+            )
+            }
         </div>
     );
 };

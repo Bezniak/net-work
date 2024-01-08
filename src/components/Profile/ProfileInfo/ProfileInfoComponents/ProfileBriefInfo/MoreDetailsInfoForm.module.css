@@ -1,0 +1,83 @@
+.formData {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+    margin: 20px 0;
+    padding-bottom: 40px;
+}
+
+.formLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: black;
+}
+
+.formLabel svg {
+    width: 20px;
+    height: 20px;
+    fill: #447ab9;
+    color: #447ab9;
+}
+
+.formLabel input {
+    border: none;
+    outline: none;
+    background-color: #ebecee;
+    padding: 10px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+
+
+
+.radioContainer {
+    display: flex;
+    align-items: center;
+    width: 100px;
+}
+
+.radioButton {
+    margin-right: 8px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+}
+
+.radioButton:checked {
+    background-color: #2196f3;
+    border-color: #2196f3;
+}
+
+.radioLabel {
+    margin-right: 16px;
+}
+
+
+
+
+.editButton {
+    margin: 20px auto;
+    background-color: #e9f0f8;
+    color: #2a5885;
+    border: none;
+    outline: none;
+    padding: 10px 30px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.editButton:hover {
+    cursor: pointer;
+    background-color: #7e93a0;
+}
