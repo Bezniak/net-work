@@ -12,7 +12,6 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
-import MoreDetails from "./components/Profile/ProfileInfo/ProfileInfoComponents/MoreDetails/MoreDetails";
 
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));

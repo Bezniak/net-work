@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {login, logout} from '../../redux/auth-reducer';
 import {Navigate} from "react-router-dom";
 
-const Login = ({login, isAuth}) => {
+const Login = ({login, isAuth, captchaUrl}) => {
     const {
         register,
         reset,
@@ -16,7 +16,7 @@ const Login = ({login, isAuth}) => {
     });
 
     const onSubmit = (data) => {
-        login(data.email, data.password, data.rememberMe);
+        login(data.email, data.password, data.rememberMe, data.captcha);
         reset();
     };
 
@@ -72,6 +72,21 @@ const Login = ({login, isAuth}) => {
                     </label>
                 </div>
 
+
+                <div>
+                    {captchaUrl && <label className={s.label}>
+                        Captcha:
+                        <input
+                            {...register('captcha', {
+                                required: 'This field is required!',
+                            })}
+                            placeholder={'Captcha'}
+                            className={s.input}
+                        />
+                    </label>}
+                    {captchaUrl && <img src={captchaUrl} alt="captcha"/>}
+                </div>
+
                 <input
                     type="submit"
                     disabled={!isValid}
@@ -79,7 +94,10 @@ const Login = ({login, isAuth}) => {
                     value="Login"
                     data-testid="submitBtn"
                 />
+
             </form>
+
+
         </div>
     );
 };
@@ -87,6 +105,7 @@ const Login = ({login, isAuth}) => {
 const mapState = (state) => {
     return {
         isAuth: state.auth.isAuth,
+        captchaUrl: state.auth.captchaUrl,
     }
 }
 

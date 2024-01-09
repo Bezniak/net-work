@@ -5,8 +5,6 @@ import {MdOutlineDriveFileRenameOutline, MdOutlineNoPhotography, MdOutlineWorkOu
 import {BsGithub, BsPersonLinesFill} from "react-icons/bs";
 import {SlSocialVkontakte} from "react-icons/sl";
 import {FaFacebook, FaInstagram, FaTwitter, FaYoutube} from "react-icons/fa";
-import {CgWebsite} from "react-icons/cg";
-import {IoLogoYoutube} from "react-icons/io";
 import {GoLink} from "react-icons/go";
 import {useForm} from "react-hook-form";
 import {GiSkills} from "react-icons/gi";
@@ -80,7 +78,8 @@ export const MoreDetailsInfoForm = (props) => {
                             My professional skills:
                             <input type="text" placeholder={'skills'} {...register('lookingForAJobDescription', {})}/>
                         </label>
-                        {errors.lookingForAJobDescription && <span className={style.error}>{errors.lookingForAJobDescription.message}</span>}
+                        {errors.lookingForAJobDescription &&
+                            <span className={style.error}>{errors.lookingForAJobDescription.message}</span>}
 
                         <label className={style.formLabel}>
                             <BsPersonLinesFill/>
@@ -95,7 +94,8 @@ export const MoreDetailsInfoForm = (props) => {
                             Github:
                             <input type="text" placeholder={'GitHub'} {...register('contacts.github', {})}/>
                         </label>
-                        {errors['contacts.github'] && <span className={style.error}>{errors['contacts.github'].message}</span>}
+                        {errors['contacts.github'] &&
+                            <span className={style.error}>{errors['contacts.github'].message}</span>}
 
                         <label className={style.formLabel}>
                             <SlSocialVkontakte/>
@@ -109,15 +109,16 @@ export const MoreDetailsInfoForm = (props) => {
                             Facebook:
                             <input type="text" placeholder={'Facebook'} {...register('contacts.facebook', {})}/>
                         </label>
-                        {errors['contacts.facebook'] && <span className={style.error}>{errors['contacts.facebook'].message}</span>}
+                        {errors['contacts.facebook'] &&
+                            <span className={style.error}>{errors['contacts.facebook'].message}</span>}
 
                         <label className={style.formLabel}>
                             <FaInstagram/>
                             Instagram:
                             <input type="text" placeholder={'Instagram'} {...register('contacts.instagram', {})}/>
                         </label>
-                        {errors['contacts.instagram'] && <span className={style.error}>{errors['contacts.instagram'].message}</span>}
-
+                        {errors['contacts.instagram'] &&
+                            <span className={style.error}>{errors['contacts.instagram'].message}</span>}
 
 
                         <label className={style.formLabel}>
@@ -125,23 +126,24 @@ export const MoreDetailsInfoForm = (props) => {
                             Twitter:
                             <input type="text" placeholder={'Twitter'} {...register('contacts.twitter', {})}/>
                         </label>
-                        {errors['contacts.twitter'] && <span className={style.error}>{errors['contacts.twitter'].message}</span>}
+                        {errors['contacts.twitter'] &&
+                            <span className={style.error}>{errors['contacts.twitter'].message}</span>}
 
                         <label className={style.formLabel}>
                             <FaYoutube/>
                             YouTube:
                             <input type="text" placeholder={'YouTube'} {...register('contacts.youtube', {})}/>
                         </label>
-                        {errors['contacts.youtube'] && <span className={style.error}>{errors['contacts.youtube'].message}</span>}
+                        {errors['contacts.youtube'] &&
+                            <span className={style.error}>{errors['contacts.youtube'].message}</span>}
 
                         <label className={style.formLabel}>
                             <GoLink/>
                             Website:
                             <input type="text" placeholder={'Website'} {...register('contacts.website', {})}/>
                         </label>
-                        {errors['contacts.website'] && <span className={style.error}>{errors['contacts.website'].message}</span>}
-
-
+                        {errors['contacts.website'] &&
+                            <span className={style.error}>{errors['contacts.website'].message}</span>}
 
 
                         {props.isOwner &&
