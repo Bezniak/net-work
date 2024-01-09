@@ -1,7 +1,7 @@
 import React, {Suspense, useEffect} from 'react';
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -12,6 +12,7 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import NotFound from "./components/NotFound/NotFound";
 
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
@@ -20,10 +21,23 @@ const UsersContainer = React.lazy(() => import('./components/Users/UsersContaine
 
 const App = (props) => {
 
-
     useEffect(() => {
+
         props.initializeApp();
-    }, []);
+
+        const catchAllUnhandledErrors = (promiseRejectionEvent) => {
+            alert(`Some error occurred: ${promiseRejectionEvent}`)
+            console.log(promiseRejectionEvent)
+        }
+
+
+        window.addEventListener('unhandledrejection', catchAllUnhandledErrors)
+
+        return () => {
+            window.removeEventListener('unhandledrejection', catchAllUnhandledErrors)
+        }
+
+    }, [props.initialized]);
 
     if (!props.initialized) {
         return <Preloader/>
@@ -49,7 +63,9 @@ const App = (props) => {
                     <Route path='/news' element={<News/>}/>
                     <Route path='/music' element={<Music/>}/>
                     <Route path='/settings' element={<Settings/>}/>
-                    <Route path='login' element={<Login/>}/>
+                    <Route path='/login' element={<Login/>}/>
+                    <Route path='*' element={<NotFound/>}/>
+                    <Route path='/' element={<Navigate to='/profile'/>}/>
                 </Routes>
             </div>
         </div>

@@ -19,7 +19,6 @@ function mapState(state) {
         userId: state.auth.userId,
         isFetching: state.auth.isFetching,
         isAuth: state.auth.isAuth,
-        myProfileData: state.auth.myProfileData,
     }
 }
 

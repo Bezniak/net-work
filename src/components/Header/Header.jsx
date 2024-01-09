@@ -4,7 +4,6 @@ import {IoLogoElectron} from "react-icons/io5";
 import {NavLink} from "react-router-dom";
 import {GrNotification} from "react-icons/gr";
 import {CiMusicNote1} from "react-icons/ci";
-import {CgMenuGridO} from "react-icons/cg";
 import {IoIosSearch} from "react-icons/io";
 import {CommonSearchInput} from "../common/CommonSearchInput/CommonSearchInput";
 import {MdKeyboardArrowDown} from "react-icons/md";

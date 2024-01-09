@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {memo} from 'react';
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
 import DialogsForm from "../../common/DialogsForm/DialogsForm";
 
-const MyPosts = React.memo((props) => {
+const MyPosts = memo((props) => {
 
     let postsElement = [...props.posts]
         .reverse()

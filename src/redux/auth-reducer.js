@@ -10,7 +10,6 @@ const initialState = {
     login: null,
     isFetching: false,
     isAuth: false,
-    myProfileData: null,
     captchaUrl: null,
 }
 

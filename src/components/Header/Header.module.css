@@ -121,6 +121,9 @@
     background-color: #dfe6ed
 }
 
+.loginButtonsItems svg:hover {
+    cursor: pointer;
+}
 
 .navLinkBlock {
     padding: 5px 10px;
@@ -130,12 +133,12 @@
 .navLinkBlock:hover {
     background-color: #dfe6ed;
     border-radius: 10px;
+    cursor: pointer;
 
 }
 
 .headerLoginButtonMenu {
     position: relative;
-    cursor: pointer;
     padding: 5px 10px;
 }
 
