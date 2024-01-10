@@ -10,9 +10,9 @@ import Login from "./components/Login/Login";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import NotFound from "./components/NotFound/NotFound";
+import {initializeApp} from "./redux/app-reducer.ts";
 
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
