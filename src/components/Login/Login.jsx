@@ -2,8 +2,8 @@ import React from 'react';
 import s from './Login.module.css';
 import {useForm} from 'react-hook-form';
 import {connect} from 'react-redux';
-import {login, logout} from '../../redux/auth-reducer';
 import {Navigate} from "react-router-dom";
+import {login, logout} from "../../redux/auth-reducer.ts";
 
 const Login = ({login, isAuth, captchaUrl}) => {
     const {
