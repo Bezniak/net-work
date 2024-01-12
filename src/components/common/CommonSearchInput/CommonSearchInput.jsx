@@ -7,7 +7,7 @@ export const CommonSearchInput = (props) => {
             <div className={s.searchIconLeft}>
                 {props.left}
             </div>
-            <input type="text" className={s.input} placeholder={props.placeholder}/>
+                <input type="text" className={s.input} placeholder={props.placeholder}/>
             <div className={s.searchIconRight}>
                 {props.right}
             </div>

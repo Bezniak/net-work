@@ -1,10 +1,11 @@
 import {connect} from "react-redux";
-import React, {Component} from "react";
-import Users from "./Users";
+import {Component} from "react";
 import Preloader from "../common/Preloader/Preloader";
+// @ts-ignore
 import {follow, pageChange, requestUsers, unfollow} from "../../redux/users-reducer.ts";
 import {withAuthRedirect} from "../common/hoc/withAuthRedirect";
 import {compose} from "redux";
+// @ts-ignore
 import {
     getCurrentPage,
     getFollowingInProgress,
@@ -12,16 +13,40 @@ import {
     getPageSize,
     getTotalUsersCount,
     getUsers
-} from "../../redux/users-selectors";
+} from "../../redux/users-selectors.ts";
+// @ts-ignore
+import Users from "./Users.tsx";
+import {UserType} from "../../types/types";
+import {AppStateType} from "../../redux/redux-store";
 
 
-class UsersContainer extends Component {
+type MapStatePropTypes = {
+    currentPage: number
+    pageSize: number
+    isFetching: boolean
+    totalUserCount: number
+    users: Array<UserType>
+    followingInProgress: Array<number>
+}
+
+type MapDispatchPropType = {
+    unfollow: (userId: number) => void
+    follow: (userId: number) => void
+    pageChange: (pageNumber: number, pageSize: number) => void
+    requestUsers: (currentPage: number, pageSize: number) => void
+}
+
+type OwnPropsType = {}
+
+type PropsType = MapStatePropTypes & MapDispatchPropType & OwnPropsType
+
+class UsersContainer extends Component<PropsType> {
 
     componentDidMount() {
         this.props.requestUsers(this.props.currentPage, this.props.pageSize)
     }
 
-    onPageChanged = (pageNumber) => {
+    onPageChanged = (pageNumber: number) => {
         this.props.pageChange(pageNumber, this.props.pageSize)
     }
 
@@ -47,7 +72,7 @@ class UsersContainer extends Component {
     }
 }
 
-function mapState(state) {
+function mapState(state: AppStateType): MapStatePropTypes {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
@@ -59,6 +84,11 @@ function mapState(state) {
 }
 
 export default compose(
-    connect(mapState, {unfollow, follow, requestUsers, pageChange}),
+    connect<MapStatePropTypes, MapDispatchPropType, OwnPropsType, AppStateType>(mapState, {
+        unfollow,
+        follow,
+        requestUsers,
+        pageChange
+    }),
     withAuthRedirect
 )(UsersContainer)

@@ -1,11 +1,20 @@
+// @ts-ignore
 import React from 'react';
+// @ts-ignore
 import styles from './Pagination.module.css';
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+
+type PropsType = {
+    currentPage: number
+    totalPages: number
+    onPageChange: (pageNumber: number) => void
+}
+
+export const Pagination: React.FC<PropsType> = ({currentPage, totalPages, onPageChange}) => {
     const handleClick = (page) => {
         if (page >= 1 && page <= totalPages && page !== currentPage) {
             onPageChange(page);
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
+            window.scrollTo({top: 0, behavior: 'smooth'}); // Scroll to top
         }
     };
 
@@ -90,4 +99,3 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     );
 };
 
-export default Pagination;

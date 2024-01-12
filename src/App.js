@@ -16,7 +16,7 @@ import {initializeApp} from "./redux/app-reducer.ts";
 
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
-const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer.tsx'));
 
 
 const App = (props) => {
