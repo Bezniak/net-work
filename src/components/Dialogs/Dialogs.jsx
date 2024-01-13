@@ -6,8 +6,7 @@ import {Navigate} from "react-router-dom";
 import DialogsForm from "../common/DialogsForm/DialogsForm";
 
 
-const
-    Dialogs = (props) => {
+const Dialogs = (props) => {
 
 
         let dialogsElement = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} key={d.id}/>)

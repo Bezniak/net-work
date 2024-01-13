@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from "./Header";
 import {connect} from "react-redux";
-import {logout} from "../../redux/auth-reducer.ts";
+import {login, logout} from "../../redux/auth-reducer.ts";
 
 const HeaderContainer = (props) => {
 
@@ -14,7 +14,7 @@ const HeaderContainer = (props) => {
 function mapState(state) {
     return {
         profile: state.profilePage.profile,
-        login: state.auth.login,
+        // login: state.auth.login,
         email: state.auth.email,
         userId: state.auth.userId,
         isFetching: state.auth.isFetching,
@@ -22,5 +22,5 @@ function mapState(state) {
     }
 }
 
-export default connect(mapState, {logout})(HeaderContainer)
+export default connect(mapState, {logout, login})(HeaderContainer)
 

@@ -1,4 +1,4 @@
-import Dialogs from "./Dialogs";
+import Dialogs from "./Dialogs.jsx";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../common/hoc/withAuthRedirect";
 import {compose} from "redux";

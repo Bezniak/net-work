@@ -1,4 +1,6 @@
+// @ts-ignore
 import React from "react";
+// @ts-ignore
 import style from './MoreDetailsInfoForm.module.css'
 import {IoClose} from "react-icons/io5";
 import {MdOutlineDriveFileRenameOutline, MdOutlineNoPhotography, MdOutlineWorkOutline} from "react-icons/md";
@@ -9,18 +11,18 @@ import {GoLink} from "react-icons/go";
 import {useForm} from "react-hook-form";
 import {GiSkills} from "react-icons/gi";
 
-export const MoreDetailsInfoForm = (props) => {
+export const MoreDetailsInfoForm = ({initialValue, saveProfile, goToEditMode, onMoreDetailClose, profile, isOwner}) => {
     const {register, handleSubmit, formState: {errors}} = useForm({
         mode: "onBlur",
         defaultValues: {
-            ...props.initialValue,
+            ...initialValue,
         },
     });
 
     const onSubmit = (data) => {
         // console.log(data);
-        props.saveProfile(data);
-        props.goToEditMode();
+        saveProfile(data);
+        goToEditMode();
     };
 
     return (
@@ -28,12 +30,12 @@ export const MoreDetailsInfoForm = (props) => {
             <div className={style.moreDetailWrapper}>
                 <div className={style.closeButton}>
                     <div className={style.closeIcon}>
-                        <IoClose onClick={props.onMoreDetailClose}/>
+                        <IoClose onClick={onMoreDetailClose}/>
                     </div>
                 </div>
                 <div className={style.photo}>
-                    {props.profile.photos.large ? (
-                        <img src={props.profile.photos.large} alt="photoAva"/>
+                    {profile.photos.large ? (
+                        <img src={profile.photos.large} alt="photoAva"/>
                     ) : (
                         <MdOutlineNoPhotography/>
                     )}
@@ -146,7 +148,7 @@ export const MoreDetailsInfoForm = (props) => {
                             <span className={style.error}>{errors['contacts.website'].message}</span>}
 
 
-                        {props.isOwner &&
+                        {isOwner &&
                             <input
                                 type="submit"
                                 // disabled={!isValid}

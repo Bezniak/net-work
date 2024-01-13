@@ -87,7 +87,7 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
     }
 
 
-export const logout = () => async (dispatch: any) => {
+export const logout = (): ThunkType => async (dispatch, getState) => {
     let res = await authAPI.logout()
 
     if (res.data.resultCode === ResultCodeEnum.Success) {
@@ -96,7 +96,7 @@ export const logout = () => async (dispatch: any) => {
 }
 
 
-const getCaptchaUrl = () => async (dispatch: any) => {
+const getCaptchaUrl = (): ThunkType => async (dispatch, getState) => {
     const res = await securityAPI.getCaptchaUrl();
     const captchaUrl = res.url;
     dispatch(getCaptchaUrlSuccess(captchaUrl))
