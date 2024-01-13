@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import s from './ProfileBriefInfo.module.css';
 import {MdOutlineInfo, MdOutlineWorkOutline} from "react-icons/md";
 import {MoreDetailsInfo} from "./MoreDetailsInfo";
-import {MoreDetailsInfoForm} from "./MoreDetailsInfoForm";
+import {MoreDetailsInfoForm} from "./MoreDetailsInfoForm.tsx";
 
 
 const ProfileBriefInfo = (props) => {

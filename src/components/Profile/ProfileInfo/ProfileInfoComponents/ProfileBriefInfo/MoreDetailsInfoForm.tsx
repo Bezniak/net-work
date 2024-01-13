@@ -1,5 +1,5 @@
 // @ts-ignore
-import React from "react";
+import React, {FC} from "react";
 // @ts-ignore
 import style from './MoreDetailsInfoForm.module.css'
 import {IoClose} from "react-icons/io5";
@@ -8,19 +8,54 @@ import {BsGithub, BsPersonLinesFill} from "react-icons/bs";
 import {SlSocialVkontakte} from "react-icons/sl";
 import {FaFacebook, FaInstagram, FaTwitter, FaYoutube} from "react-icons/fa";
 import {GoLink} from "react-icons/go";
-import {useForm} from "react-hook-form";
+import {SubmitHandler, useForm} from "react-hook-form";
 import {GiSkills} from "react-icons/gi";
+import {ProfileType} from "../../../../../types/types";
 
-export const MoreDetailsInfoForm = ({initialValue, saveProfile, goToEditMode, onMoreDetailClose, profile, isOwner}) => {
-    const {register, handleSubmit, formState: {errors}} = useForm({
-        mode: "onBlur",
-        defaultValues: {
-            ...initialValue,
-        },
-    });
 
-    const onSubmit = (data) => {
-        // console.log(data);
+type FormValues = {
+    fullName: string
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    aboutMe: string
+    contacts: {
+        website: string
+        youtube: string
+        twitter: string
+        instagram: string
+        vk: string
+        facebook: string
+        github: string
+    }
+}
+
+
+type PropsType = {
+    initialValue: ProfileType | null
+    saveProfile: (data: FormValues) => void
+    goToEditMode: () => void
+    onMoreDetailClose: () => void
+    profile: ProfileType | null
+    isOwner: boolean
+}
+
+export const MoreDetailsInfoForm: FC<PropsType> = ({
+                                                       initialValue,
+                                                       saveProfile,
+                                                       goToEditMode,
+                                                       onMoreDetailClose,
+                                                       profile,
+                                                       isOwner
+                                                   }) => {
+    const {register, handleSubmit, formState: {errors}} =
+        useForm<FormValues>({
+            mode: "onBlur",
+            defaultValues: {
+                ...initialValue,
+            },
+        });
+
+    const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
         saveProfile(data);
         goToEditMode();
     };
