@@ -1,4 +1,4 @@
-import {profileAPI} from "../api/api";
+import {profileAPI, ResultCodeEnum} from "../api/api.ts";
 import {PhotosType, PostType, ProfileType} from "../types/types";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType} from "./redux-store";
@@ -128,26 +128,26 @@ type ProfileErrorsActionType = {
     type: typeof SET_ERRORS
     messages: string
 }
-const profileErrors = (messages: string): ProfileErrorsActionType => ({type: SET_ERRORS, messages})
+const profileErrors = (messages: Array<string>): ProfileErrorsActionType => ({type: SET_ERRORS, messages})
 
 
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>
 
 export const getUserProfile = (userId: number): ThunkType => async (dispatch, getState) => {
     const res = await profileAPI.getProfile(userId);
-    dispatch(setUserProfile(res.data));
+    dispatch(setUserProfile(res));
 }
 
 export const getStatus = (userId: number): ThunkType => async (dispatch, getState) => {
     let res = await profileAPI.getStatus(userId);
-    dispatch(setStatus(res.data))
+    dispatch(setStatus(res))
 }
 
 export const updateStatus = (status: string): ThunkType => async (dispatch, getState) => {
     try {
         let res = await profileAPI.updateStatus(status);
 
-        if (res.data.resultCode === 0) {
+        if (res.resultCode === ResultCodeEnum.Success) {
             dispatch(setStatus(status))
         }
 
@@ -158,8 +158,8 @@ export const updateStatus = (status: string): ThunkType => async (dispatch, getS
 
 export const savePhoto = (file: any): ThunkType => async (dispatch, getState) => {
     let res = await profileAPI.savePhoto(file);
-    if (res.data.resultCode === 0) {
-        dispatch(savePhotoSuccess(res.data.data.photos))
+    if (res.resultCode === ResultCodeEnum.Success) {
+        dispatch(savePhotoSuccess(res.data.photos))
     }
 }
 
@@ -168,10 +168,10 @@ export const saveProfile = (profile: ProfileType): ThunkType => async (dispatch,
 
     const res = await profileAPI.saveProfile(profile);
 
-    if (res.data.resultCode === 0) {
+    if (res.resultCode === ResultCodeEnum.Success) {
         await dispatch(getUserProfile(userId))
     } else {
-        dispatch(profileErrors(res.data.messages))
+        dispatch(profileErrors(res.messages))
     }
 }
 

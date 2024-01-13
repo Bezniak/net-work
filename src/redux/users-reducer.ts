@@ -1,4 +1,4 @@
-import {followAPI, usersAPI} from "../api/api";
+import {followAPI, ResultCodeEnum, usersAPI} from "../api/api.ts";
 import {UserType} from "../types/types";
 import {Dispatch} from "redux";
 import {AppStateType} from "./redux-store";
@@ -71,7 +71,6 @@ export const usersReducer = (state = initialState, action: ActionsType): Initial
                 isFetching: action.isFetching,
             }
         case TOGGLE_IS_FOLLOWING_PROGRESS:
-            // @ts-ignore
             return {
                 ...state,
                 followingInProgress: action.isFetching
@@ -175,7 +174,7 @@ export const pageChange = (pageNumber: number, pageSize: number): ThunkType => {
 export const follow = (userId: number): ThunkType => async (dispatch, getState) => {
     dispatch(toggleFollowingProgress(true, userId));
     const data = await followAPI.follow(userId);
-    if (data.resultCode === 0) {
+    if (data.resultCode === ResultCodeEnum.Success) {
         dispatch(followSuccess(userId))
     }
     dispatch(toggleFollowingProgress(false, userId));
@@ -184,7 +183,7 @@ export const follow = (userId: number): ThunkType => async (dispatch, getState) 
 export const unfollow = (userId: number): ThunkType => async (dispatch, getState) => {
     dispatch(toggleFollowingProgress(true, userId));
     const data = await followAPI.unfollow(userId);
-    if (data.resultCode === 0) {
+    if (data.resultCode === ResultCodeEnum.Success) {
         dispatch(unfollowSuccess(userId));
     }
     dispatch(toggleFollowingProgress(false, userId));
