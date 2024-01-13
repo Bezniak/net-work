@@ -1,4 +1,6 @@
 import {authAPI, securityAPI} from "../api/api";
+import {ThunkAction} from "redux-thunk";
+import {AppStateType} from "./redux-store";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'security/get-captcha-url/GET_CAPTCHA_URL_SUCCESS';
@@ -14,7 +16,9 @@ const initialState = {
 
 export type InitialStateType = typeof initialState;
 
-export const authReducer = (state = initialState, action: any): InitialStateType => {
+type ActionsType = SetAuthUserDataActionType | GetCaptchaUrlSuccessActionType
+
+export const authReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
         case GET_CAPTCHA_URL_SUCCESS:
         case SET_USER_DATA:
@@ -56,7 +60,10 @@ const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccessActionTyp
     payload: {captchaUrl}
 })
 
-export const getAuthUserData = () => async (dispatch: any) => {
+
+type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>
+
+export const getAuthUserData = (): ThunkType => async (dispatch, getState) => {
 
     let res = await authAPI.me();
 
@@ -66,21 +73,18 @@ export const getAuthUserData = () => async (dispatch: any) => {
     }
 }
 
-export const login = (email: string, password: string, rememberMe: boolean, captcha: string) => async (dispatch: any) => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: string): ThunkType =>
+    async (dispatch, getState) => {
+        let response = await authAPI.login(email, password, rememberMe, captcha)
 
-    let response = await authAPI.login(email, password, rememberMe, captcha)
-
-    if (response.data.resultCode === 0) {
-        dispatch(getAuthUserData())
-    } else {
-
-        if (response.data.resultCode === 10) {
-            dispatch(getCaptchaUrl())
+        if (response.data.resultCode === 0) {
+            dispatch(getAuthUserData())
+        } else {
+            if (response.data.resultCode === 10) {
+                dispatch(getCaptchaUrl())
+            }
         }
     }
-
-
-}
 
 
 export const logout = () => async (dispatch: any) => {

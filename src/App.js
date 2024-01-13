@@ -15,7 +15,7 @@ import NotFound from "./components/NotFound/NotFound";
 import {initializeApp} from "./redux/app-reducer.ts";
 
 
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.tsx'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer.tsx'));
 
 
