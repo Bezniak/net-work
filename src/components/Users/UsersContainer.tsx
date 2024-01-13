@@ -1,7 +1,6 @@
 import {connect} from "react-redux";
 import {Component} from "react";
 import Preloader from "../common/Preloader/Preloader";
-// @ts-ignore
 import {follow, pageChange, requestUsers, unfollow} from "../../redux/users-reducer.ts";
 import {withAuthRedirect} from "../common/hoc/withAuthRedirect";
 import {compose} from "redux";
@@ -14,7 +13,6 @@ import {
     getTotalUsersCount,
     getUsers
 } from "../../redux/users-selectors.ts";
-// @ts-ignore
 import Users from "./Users.tsx";
 import {UserType} from "../../types/types";
 import {AppStateType} from "../../redux/redux-store";
