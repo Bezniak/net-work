@@ -16,6 +16,7 @@ export type ContactsType = {
 }
 
 export type PhotosType = {
+    photos(photos: any): { type: "SAVE_PHOTO_SUCCESS"; photos: PhotosType }
     small: string | null
     large: string | null
 }
@@ -35,12 +36,4 @@ export type UserType = {
     status: string
     photos: PhotosType
     followed: boolean
-}
-
-export type GetUserType = {
-    id: number
-    name: string
-    status: string
-    photos: PhotosType
-    followed:boolean
 }

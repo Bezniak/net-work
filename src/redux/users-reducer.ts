@@ -1,8 +1,13 @@
 // @ts-ignore
-import {followAPI, ResultCodeEnum, usersAPI} from "../api/api.ts";
 import {UserType} from "../types/types";
 import {AppStateType, InferActionsTypes} from "./redux-store";
 import {ThunkAction} from "redux-thunk";
+// @ts-ignore
+import {usersAPI} from "../api/users-api.ts";
+// @ts-ignore
+import {followAPI} from "../api/follow-api.ts";
+// @ts-ignore
+import {ResultCodeEnum} from "../api/api.ts";
 
 
 const initialState = {

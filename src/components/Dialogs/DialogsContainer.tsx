@@ -3,8 +3,8 @@ import {connect} from "react-redux";
 import {withAuthRedirect} from "../common/hoc/withAuthRedirect";
 import {compose} from "redux";
 // @ts-ignore
-import {InitialDialogsStateType, sendMessage} from "../../redux/dialogs-reducer.ts";
 import {AppStateType} from "../../redux/redux-store";
+import {InitialDialogsStateType} from "../../redux/dialogs-reducer";
 
 
 type MapStateType = {
