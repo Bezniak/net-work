@@ -1,5 +1,7 @@
 import Dialogs from "./Dialogs.jsx";
 import {connect} from "react-redux";
+// @ts-ignore
+import {actions} from '../../redux/dialogs-reducer.ts'
 import {withAuthRedirect} from "../common/hoc/withAuthRedirect";
 import {compose} from "redux";
 // @ts-ignore
@@ -24,6 +26,6 @@ const mapState = (state: AppStateType): MapStateType => {
 }
 
 export default compose(
-    connect<MapStateType, MapDispatchType, OwnProps, AppStateType>(mapState, {sendMessage}),
+    connect<MapStateType, MapDispatchType, OwnProps, AppStateType>(mapState, {sendMessage: actions.sendMessage}),
     withAuthRedirect
 )(Dialogs)

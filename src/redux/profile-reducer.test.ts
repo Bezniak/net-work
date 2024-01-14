@@ -1,4 +1,5 @@
-import {addPost, deletePost, profileReducer} from "./profile-reducer.ts";
+// @ts-ignore
+import {actions, profileReducer} from "./profile-reducer.ts";
 
 const state = {
     posts: [
@@ -8,10 +9,11 @@ const state = {
     ],
     profile: null,
     status: '',
+    errors: [] as Array<string> | string,
 }
 
 it('length of post should be incremented', () => {
-    let action = addPost('it-incubator.com')
+    let action = actions.addPost('it-incubator.com')
 
 
     let newState = profileReducer(state, action)
@@ -19,14 +21,14 @@ it('length of post should be incremented', () => {
 });
 
 it('message of new post should be correct', () => {
-    let action = addPost('it-incubator.com')
+    let action = actions.addPost('it-incubator.com')
 
     let newState = profileReducer(state, action)
     expect(newState.posts[4].message).toBe('it-incubator.com')
 });
 
 it('after deleting length of messages should be decrement', () => {
-    let action = deletePost(1)
+    let action = actions.deletePost(1)
 
     let newState = profileReducer(state, action)
     expect(newState.posts.length).toBe(3)

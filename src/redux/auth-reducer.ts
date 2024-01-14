@@ -1,6 +1,5 @@
-import {ThunkAction} from "redux-thunk";
 // @ts-ignore
-import {AppStateType, InferActionsTypes} from "./redux-store.ts";
+import {BaseThunkType, InferActionsTypes} from "./redux-store.ts";
 // @ts-ignore
 import {authAPI} from "../api/auth-api.ts";
 // @ts-ignore
@@ -16,10 +15,6 @@ const initialState = {
     isAuth: false,
     captchaUrl: null as string | null,
 }
-
-export type InitialStateType = typeof initialState;
-
-type ActionsType = InferActionsTypes<typeof actions>
 
 export const authReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
@@ -37,23 +32,20 @@ export const authReducer = (state = initialState, action: ActionsType): InitialS
 
 export const actions = {
     setUserData: (userId: number | null, email: string | null, login: string | null, isAuth: boolean) => ({
-        type: 'SET_USER_DATA',
-        payload: {userId, email, login, isAuth}
+        type: 'SET_USER_DATA', payload: {userId, email, login, isAuth}
     } as const),
     getCaptchaUrlSuccess: (captchaUrl: string) => ({
-        type: 'GET_CAPTCHA_URL_SUCCESS',
-        payload: {captchaUrl}
+        type: 'GET_CAPTCHA_URL_SUCCESS', payload: {captchaUrl}
     } as const),
 }
 
-
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>
 
 export const getAuthUserData = (): ThunkType => async (dispatch, getState) => {
 
     let meData = await authAPI.me();
 
     if (meData.resultCode === ResultCodeEnum.Success) {
+        // @ts-ignore
         let {id, email, login} = meData.data;
         dispatch(actions.setUserData(id, email, login, true));
     }
@@ -89,3 +81,8 @@ const getCaptchaUrl = (): ThunkType => async (dispatch, getState) => {
 }
 
 
+export type InitialStateType = typeof initialState;
+
+type ActionsType = InferActionsTypes<typeof actions>
+
+type ThunkType = BaseThunkType<ActionsType>

@@ -1,5 +1,5 @@
 import MyPosts from "./MyPosts";
-import {addPost} from "../../../redux/profile-reducer.ts";
+import {actions} from "../../../redux/profile-reducer.ts";
 import {connect} from "react-redux";
 
 
@@ -10,5 +10,6 @@ const mapState = (state) => {
     }
 }
 
-export const MyPostsContainer = connect(mapState, {addPost})(MyPosts);
+export const MyPostsContainer = connect(mapState,
+    {addPost: actions.addPost})(MyPosts);
 

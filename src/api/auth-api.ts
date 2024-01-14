@@ -15,18 +15,18 @@ type LoginResponseDataType = {
 }
 
 export const authAPI = {
-    me() {
-        return instance.get<APIResponseType<MeResponseDataType>>(`auth/me`)
-            .then(res => res.data);
+    async me() {
+        let res = await instance.get<APIResponseType<MeResponseDataType>>(`auth/me`);
+        return res.data;
     },
-    login(email: string, password: string, rememberMe: boolean = false, captcha: null | string = null) {
-        return instance.post<APIResponseType<LoginResponseDataType, ResultCodeWithCaptchaEnum | ResultCodeEnum>>(`auth/login`, {
+    async login(email: string, password: string, rememberMe: boolean = false, captcha: null | string = null) {
+        let res = await instance.post<APIResponseType<LoginResponseDataType, ResultCodeWithCaptchaEnum | ResultCodeEnum>>(`auth/login`, {
             email,
             password,
             rememberMe,
             captcha
-        })
-            .then(res => res.data);
+        });
+        return res.data;
     },
     logout() {
         return instance.delete(`auth/login`);

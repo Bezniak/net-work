@@ -1,8 +1,7 @@
-import {ThunkAction} from "redux-thunk";
 // @ts-ignore
 import {PostType, ProfileType} from "../types/types.ts";
 // @ts-ignore
-import {AppStateType, InferActionsTypes} from "./redux-store.ts";
+import { BaseThunkType, InferActionsTypes} from "./redux-store.ts";
 // @ts-ignore
 import {profileAPI} from "../api/profile-api.ts";
 // @ts-ignore
@@ -21,10 +20,8 @@ const initialState = {
     errors: [] as Array<string> | string,
 }
 
-export type InitialStateType = typeof initialState
 
 export const profileReducer = (state = initialState, action: ActionsType): InitialStateType => {
-
     switch (action.type) {
         case 'ADD_POST': {
             return {
@@ -70,7 +67,6 @@ export const profileReducer = (state = initialState, action: ActionsType): Initi
 
 }
 
-type ActionsType = InferActionsTypes<typeof actions>
 
 export const actions = {
     addPost: (post: string) => ({type: 'ADD_POST', post} as const),
@@ -87,7 +83,6 @@ export const actions = {
 }
 
 
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>
 
 export const getUserProfile = (userId: number): ThunkType => async (dispatch, getState) => {
     const res = await profileAPI.getProfile(userId);
@@ -112,7 +107,7 @@ export const updateStatus = (status: string): ThunkType => async (dispatch, getS
     }
 }
 
-export const savePhoto = (file: any): ThunkType => async (dispatch, getState) => {
+export const savePhoto = (file: File): ThunkType => async (dispatch, getState) => {
     let data = await profileAPI.savePhoto(file);
     if (data.resultCode === ResultCodeEnum.Success) {
         dispatch(actions.savePhotoSuccess(data.data.photos))
@@ -125,9 +120,18 @@ export const saveProfile = (profile: ProfileType): ThunkType => async (dispatch,
     const data = await profileAPI.saveProfile(profile);
 
     if (data.resultCode === ResultCodeEnum.Success) {
-        await dispatch(getUserProfile(userId))
+        if (userId !== null) {
+            await dispatch(getUserProfile(userId))
+        } else {
+            throw new Error('userId can\'t be null')
+        }
     } else {
         dispatch(actions.profileErrors(data.messages))
     }
 }
 
+
+
+export type InitialStateType = typeof initialState
+type ActionsType = InferActionsTypes<typeof actions>
+type ThunkType = BaseThunkType<ActionsType>

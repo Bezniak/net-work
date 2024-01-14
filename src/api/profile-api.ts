@@ -1,12 +1,9 @@
 // @ts-ignore
 import {PhotosType, ProfileType} from "../types/types.ts";
 // @ts-ignore
-import {instance, APIResponseType} from "./api.ts";
+import {APIResponseType, instance} from "./api.ts";
 
 
-type SavePhotoResponseDataType = {
-    photos: PhotosType
-}
 export const profileAPI = {
     async getProfile(userId: number) {
         let res = await instance.get<ProfileType>(`profile/${userId}`);
@@ -20,7 +17,7 @@ export const profileAPI = {
         let res = await instance.put<APIResponseType>(`profile/status`, {status});
         return res.data;
     },
-    async savePhoto(photoFile: any) {
+    async savePhoto(photoFile: File) {
         const formData = new FormData();
         formData.append('image', photoFile)
 
