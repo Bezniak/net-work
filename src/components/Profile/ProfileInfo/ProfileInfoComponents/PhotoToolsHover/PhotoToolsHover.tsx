@@ -1,4 +1,6 @@
-import React, {useState} from "react";
+// @ts-ignore
+import React, {FC, useState} from "react";
+// @ts-ignore
 import style from "./PhotoToolsHover.module.css";
 import {HiOutlinePhotograph} from "react-icons/hi";
 import {MdOutlineEdit} from "react-icons/md";
@@ -7,7 +9,11 @@ import {DiPhotoshop} from "react-icons/di";
 import {RiDeleteBin5Line} from "react-icons/ri";
 import {IoClose} from "react-icons/io5";
 
-export const PhotoToolsHover = (props) => {
+
+type PropsTypeForPhotoToolsHover = {
+    savePhoto: (file: File) => void
+}
+export const PhotoToolsHover: FC<PropsTypeForPhotoToolsHover> = ({savePhoto}) => {
     const [showUpdatePhoto, setShowUpdatePhoto] = useState(false);
 
     const handleUpdatePhotoClick = () => {
@@ -28,7 +34,7 @@ export const PhotoToolsHover = (props) => {
                 ? (
                     <div className={style.overlay} onClick={handleClosePhotoToolsHover}>
                         <div className={style.updatePhotoContainer}>
-                            <UpdatePhoto savePhoto={props.savePhoto} onClose={handleCloseUpdatePhoto} />
+                            <UpdatePhoto savePhoto={savePhoto} onClose={handleCloseUpdatePhoto}/>
                         </div>
                     </div>
                 )
@@ -62,18 +68,21 @@ export const PhotoToolsHover = (props) => {
 
 
 
+type PropsTypeForUpdatePhoto = {
+    savePhoto: (file: File) => void
+    onClose: () => void
+}
+const UpdatePhoto: FC<PropsTypeForUpdatePhoto> = ({savePhoto, onClose}) => {
 
-const UpdatePhoto = (props) => {
-
-    const onMainPhotoSelected = (e) => {
+    const onMainPhotoSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files.length) {
-            props.savePhoto(e.target.files[0]);
+            savePhoto(e.target.files[0]);
         }
     }
 
     return (
         <div className={style.updatePhotoBlock}>
-            <div className={style.close} onClick={props.onClose}>
+            <div className={style.close} onClick={onClose}>
                 <IoClose/>
             </div>
             <div>Uploading a new photo</div>

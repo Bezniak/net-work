@@ -3,9 +3,11 @@ import React, {FC, useEffect} from 'react';
 import {connect} from 'react-redux';
 // @ts-ignore
 import {getStatus, getUserProfile, savePhoto, saveProfile, updateStatus} from '../../redux/profile-reducer.ts';
-import Profile from "./Profile";
+// @ts-ignore
+import Profile from "./Profile.tsx";
 import {useParams} from "react-router-dom";
 import {compose} from "redux";
+// @ts-ignore
 import {withAuthRedirect} from "../common/hoc/withAuthRedirect.tsx";
 import {AppStateType} from "../../redux/redux-store";
 
@@ -15,7 +17,8 @@ type DispatchPropsType = {
     getUserProfile: (id: any) => void
     getStatus: (id: any) => void
     updateStatus: () => void
-    savePhoto: () => void
+    savePhoto: (file: File) => void
+    saveProfile: () => void
 
 }
 

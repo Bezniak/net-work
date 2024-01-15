@@ -13,21 +13,7 @@ import {GiSkills} from "react-icons/gi";
 import {ProfileType} from "../../../../../types/types";
 
 
-type FormValues = {
-    fullName: string
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
-    aboutMe: string
-    contacts: {
-        website: string
-        youtube: string
-        twitter: string
-        instagram: string
-        vk: string
-        facebook: string
-        github: string
-    }
-}
+type FormValues = ProfileType
 
 
 type PropsType = {
@@ -37,6 +23,7 @@ type PropsType = {
     onMoreDetailClose: () => void
     profile: ProfileType | null
     isOwner: boolean
+    errors: Array<string>
 }
 
 export const MoreDetailsInfoForm: FC<PropsType> = ({
@@ -45,7 +32,7 @@ export const MoreDetailsInfoForm: FC<PropsType> = ({
                                                        goToEditMode,
                                                        onMoreDetailClose,
                                                        profile,
-                                                       isOwner
+                                                       isOwner,
                                                    }) => {
     const {register, handleSubmit, formState: {errors}} =
         useForm<FormValues>({

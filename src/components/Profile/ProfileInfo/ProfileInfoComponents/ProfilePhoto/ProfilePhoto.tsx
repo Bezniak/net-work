@@ -1,9 +1,19 @@
-import React, {useEffect, useState} from 'react';
+// @ts-ignore
+import React, {FC, useEffect, useState} from 'react';
+// @ts-ignore
 import s from './ProfilePhoto.module.css';
 import {PiCamera} from "react-icons/pi";
-import {PhotoToolsHover} from "../PhotoToolsHover/PhotoToolsHover";
+// @ts-ignore
+import {PhotoToolsHover} from "../PhotoToolsHover/PhotoToolsHover.tsx";
+import {ProfileType} from "../../../../../types/types";
 
-const ProfilePhoto = (props) => {
+
+type PropsType = {
+    profile: ProfileType
+    isOwner: boolean
+    savePhoto: (file: File) => void
+}
+const ProfilePhoto: FC<PropsType> = ({profile, isOwner, savePhoto}) => {
     const [isPhotoToolsVisible, setIsPhotoToolsVisible] = useState(false);
 
     const handleMouseEnter = () => {
@@ -20,7 +30,7 @@ const ProfilePhoto = (props) => {
         }, 100); // Set your desired delay in milliseconds
     };
 
-    let timeoutId;
+    let timeoutId: any;
 
     useEffect(() => {
         return () => {
@@ -30,13 +40,13 @@ const ProfilePhoto = (props) => {
 
     return (
         <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            {props.profile.photos.large
-                ? (<img className={s.profilePhoto} src={props.profile.photos.large} alt="avatar"/>)
+            {profile.photos.large
+                ? (<img className={s.profilePhoto} src={profile.photos.large} alt="avatar"/>)
                 : (<PiCamera className={s.profilePhotoSVG}/>)
             }
-            {props.isOwner && isPhotoToolsVisible && (
+            {isOwner && isPhotoToolsVisible && (
                 <div>
-                    <PhotoToolsHover savePhoto={props.savePhoto}/>
+                    <PhotoToolsHover savePhoto={savePhoto}/>
                 </div>
             )}
         </div>

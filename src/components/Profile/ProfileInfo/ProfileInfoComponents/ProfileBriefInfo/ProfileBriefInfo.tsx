@@ -1,11 +1,23 @@
-import React, {useState} from 'react';
+// @ts-ignore
+import React, {FC, useState} from 'react';
+// @ts-ignore
 import s from './ProfileBriefInfo.module.css';
 import {MdOutlineInfo, MdOutlineWorkOutline} from "react-icons/md";
-import {MoreDetailsInfo} from "./MoreDetailsInfo";
+// @ts-ignore
+import {MoreDetailsInfo} from "./MoreDetailsInfo.tsx";
+// @ts-ignore
 import {MoreDetailsInfoForm} from "./MoreDetailsInfoForm.tsx";
+import {ProfileType} from "../../../../../types/types";
 
 
-const ProfileBriefInfo = (props) => {
+type PropsType = {
+    profile: ProfileType
+    isOwner: boolean
+    saveProfile: () => void
+    errors: Array<string>
+}
+
+const ProfileBriefInfo: FC<PropsType> = ({profile, isOwner, saveProfile, errors}) => {
 
     const [isMoreDetailsVisible, setIsMoreDetailsVisible] = useState(false);
 
@@ -22,7 +34,7 @@ const ProfileBriefInfo = (props) => {
 
     return (
         <div className={s.profileAboutButton}>
-            {props.profile.lookingForAJob &&
+            {profile.lookingForAJob &&
                 <>
                     <MdOutlineWorkOutline/>
                     <span>#OpenToWork</span>
@@ -32,15 +44,15 @@ const ProfileBriefInfo = (props) => {
             <span onClick={onMoreDetailOpen}> More details</span>
             {isMoreDetailsVisible && (editMode
                     ? <MoreDetailsInfoForm onMoreDetailClose={onMoreDetailClose}
-                                           errors={props.errors}
-                                           profile={props.profile}
-                                           initialValue={props.profile}
-                                           isOwner={props.isOwner}
+                                           profile={profile}
+                                           initialValue={profile}
+                                           isOwner={isOwner}
+                                           errors={errors}
                                            goToEditMode={() => setEditMode(false)}
-                                           saveProfile={props.saveProfile}/>
+                                           saveProfile={saveProfile}/>
                     : <MoreDetailsInfo onMoreDetailClose={onMoreDetailClose}
-                                       profile={props.profile}
-                                       isOwner={props.isOwner}
+                                       profile={profile}
+                                       isOwner={isOwner}
                                        goToEditMode={() => setEditMode(true)}/>
             )
             }

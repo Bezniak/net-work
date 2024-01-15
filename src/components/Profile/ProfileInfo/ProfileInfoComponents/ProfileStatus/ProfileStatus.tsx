@@ -1,18 +1,26 @@
-import React, {useEffect, useState} from 'react';
+// @ts-ignore
+import React, {FC, useEffect, useState} from 'react';
+// @ts-ignore
 import s from "../../ProfileInfo.module.css";
 
-const ProfileStatus = (props) => {
+
+type PropsType = {
+    status: string
+    updateStatus: (statusValue: string) => void
+}
+
+const ProfileStatus: FC<PropsType> = ({status, updateStatus}) => {
 
     const [editMode, setEditMode] = useState(false);
-    const [statusValue, setStatusValue] = useState(props.status);
+    const [statusValue, setStatusValue] = useState(status);
 
 
     useEffect(() => {
-        setStatusValue(props.status)
-    }, [props.status]);
+        setStatusValue(status)
+    }, [status]);
 
 
-    const onStatusChange = (e) => {
+    const onStatusChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setStatusValue(e.target.value);
     }
 
@@ -22,7 +30,7 @@ const ProfileStatus = (props) => {
 
     const saveStatus = () => {
         setEditMode(false)
-        props.updateStatus(statusValue)
+        updateStatus(statusValue)
     }
 
     return (
@@ -31,7 +39,7 @@ const ProfileStatus = (props) => {
                 <span className={s.profileAboutMe}
                       onDoubleClick={activateEditMode}
                 >
-                    {props.status || "No status"}
+                    {status || "No status"}
                 </span>
             }
 

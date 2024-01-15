@@ -24,6 +24,7 @@ export type PhotosType = {
 export type ProfileType = {
     userId: number
     lookingForAJob: boolean
+    aboutMe?: string
     lookingForAJobDescription: string
     fullName: string
     contacts: ContactsType

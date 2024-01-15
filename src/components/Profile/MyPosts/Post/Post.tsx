@@ -1,13 +1,20 @@
-import React, {useState} from 'react';
+// @ts-ignore
+import React, {FC, useState} from 'react';
+// @ts-ignore
 import s from './Post.module.css';
 import {BiLike, BiSolidLike} from "react-icons/bi";
 import {FaUser} from "react-icons/fa";
 
 
-const Post = (props) => {
+type PropsType = {
+    message: string
+    likeCounts: number
+}
+
+const Post: FC<PropsType> = ({message, likeCounts}) => {
 
     const [isLiked, setIsLiked] = useState(false);
-    const [likeCount, setLikeCount] = useState(+props.likeCounts);
+    const [likeCount, setLikeCount] = useState(+likeCounts);
 
 
     const onLikedChanged = () => {
@@ -23,7 +30,7 @@ const Post = (props) => {
         <div className={s.postWrapper}>
             <div className={s.postContainer}>
                 <FaUser className={s.noAvatarPhoto}/>
-                <div>{props.message}</div>
+                <div>{message}</div>
             </div>
             <div>
                 <div className={s.likeContainer}>
