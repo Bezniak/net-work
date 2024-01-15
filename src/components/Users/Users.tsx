@@ -1,5 +1,6 @@
 import {FC} from 'react';
-import {SearchInput} from '../common/SearchInput/SearchInput';
+// @ts-ignore
+import {SearchInput} from '../common/SearchInput/SearchInput.tsx';
 // @ts-ignore
 import s from './Users.module.css';
 // @ts-ignore

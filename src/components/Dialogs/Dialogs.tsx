@@ -1,8 +1,10 @@
 import {FC} from 'react';
 // @ts-ignore
 import s from './Dialogs.module.css';
-import {DialogItem} from "./DialogItem/DialogItem";
-import {Message} from "./Message/Message";
+// @ts-ignore
+import {DialogItem} from "./DialogItem/DialogItem.tsx";
+// @ts-ignore
+import {Message} from "./Message/Message.tsx";
 // @ts-ignore
 import DialogsForm from "../common/DialogsForm/DialogsForm.tsx";
 // @ts-ignore

@@ -1,3 +1,4 @@
+// @ts-ignore
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { CgProfile } from 'react-icons/cg';
@@ -6,12 +7,14 @@ import { TbUsersGroup } from 'react-icons/tb';
 import { FiMessageCircle } from 'react-icons/fi';
 import { MdOutlineLibraryMusic } from 'react-icons/md';
 import { IoSettingsOutline } from 'react-icons/io5';
+// @ts-ignore
 import s from './Navbar.module.css';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
+
     const navigate = useNavigate();
 
-    const handleNavLinkClick = (path) => {
+    const handleNavLinkClick = (path: string) => {
         navigate(path);
     };
 

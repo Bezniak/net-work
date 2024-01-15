@@ -1,12 +1,13 @@
 // @ts-ignore
-import React, { FC, ChangeEvent } from 'react';
+import React, {ChangeEvent, FC} from 'react';
 // @ts-ignore
 import s from './ProfileInfo.module.css';
-import Preloader from '../../common/Preloader/Preloader';
+// @ts-ignore
+import Preloader from '../../common/Preloader/Preloader.tsx';
 // @ts-ignore
 import ProfileStatus from './ProfileInfoComponents/ProfileStatus/ProfileStatus.tsx';
 // @ts-ignore
-import { ProfilePhotoBackground } from './ProfileInfoComponents/ProfilePhotoBackground/ProfilePhotoBackgroung.tsx';
+import {ProfilePhotoBackground} from './ProfileInfoComponents/ProfilePhotoBackground/ProfilePhotoBackgroung.tsx';
 // @ts-ignore
 import ProfilePhoto from './ProfileInfoComponents/ProfilePhoto/ProfilePhoto.tsx';
 // @ts-ignore
@@ -14,16 +15,16 @@ import ProfileButtonsBlock from './ProfileInfoComponents/ProfileButtonsBlock/Pro
 // @ts-ignore
 import ProfileBriefInfo from './ProfileInfoComponents/ProfileBriefInfo/ProfileBriefInfo.tsx';
 // @ts-ignore
-import { ProfileType } from '../../../types/types.ts';
+import {ProfileType} from '../../../types/types.ts';
 
 type PropsType = {
-    profile: ProfileType;
+    profile: ProfileType | null;
     isOwner: boolean;
     savePhoto: (file: File) => void
-    updateStatus: () => void;
+    updateStatus: (statusValue: string) => void;
     errors: Array<string>;
     status: string;
-    saveProfile: () => void;
+    saveProfile: (profile: ProfileType) => void
 };
 
 const ProfileInfo: FC<PropsType> = ({
@@ -36,10 +37,10 @@ const ProfileInfo: FC<PropsType> = ({
                                         saveProfile,
                                     }) => {
     if (!profile) {
-        return <Preloader />;
+        return <Preloader/>;
     }
 
-    const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>): void => {
+    const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length) {
             savePhoto(e.target.files[0]);
         }
@@ -48,13 +49,13 @@ const ProfileInfo: FC<PropsType> = ({
     return (
         <div>
             <div className={s.descriptionBlock}>
-                <ProfilePhotoBackground />
-                <ProfilePhoto profile={profile} isOwner={isOwner} savePhoto={savePhoto} />
+                <ProfilePhotoBackground/>
+                <ProfilePhoto profile={profile} isOwner={isOwner} savePhoto={savePhoto}/>
 
                 {isOwner && (
                     <input
                         type="file"
-                        style={{ position: 'absolute', top: 330, left: 20, zIndex: 11 }}
+                        style={{position: 'absolute', top: 330, left: 20, zIndex: 11}}
                         onChange={onMainPhotoSelected}
                     />
                 )}
@@ -62,7 +63,7 @@ const ProfileInfo: FC<PropsType> = ({
                 <div className={s.profileBlock}>
                     <div className={s.profileAbout}>
                         <div className={s.profileUserName}>{profile.fullName}</div>
-                        <ProfileStatus status={status} updateStatus={updateStatus} />
+                        <ProfileStatus status={status} updateStatus={updateStatus}/>
                         <ProfileBriefInfo
                             profile={profile}
                             isOwner={isOwner}
@@ -70,7 +71,7 @@ const ProfileInfo: FC<PropsType> = ({
                             errors={errors}
                         />
                     </div>
-                    <ProfileButtonsBlock />
+                    <ProfileButtonsBlock/>
                 </div>
             </div>
         </div>

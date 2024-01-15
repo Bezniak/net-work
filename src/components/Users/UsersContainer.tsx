@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { Component } from "react";
-import Preloader from "../common/Preloader/Preloader";
+// @ts-ignore
+import Preloader from "../common/Preloader/Preloader.tsx";
 // @ts-ignore
 import { follow, pageChange, requestUsers, unfollow } from "../../redux/users-reducer.ts";
 // @ts-ignore

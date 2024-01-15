@@ -10,17 +10,19 @@ import {compose} from "redux";
 // @ts-ignore
 import {withAuthRedirect} from "../common/hoc/withAuthRedirect.tsx";
 import {AppStateType} from "../../redux/redux-store";
+import {ProfileType} from "../../types/types";
 
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
+
 type DispatchPropsType = {
-    getUserProfile: (id: any) => void
-    getStatus: (id: any) => void
+    getUserProfile: (id: number | string) => void
+    getStatus: (id: number | string) => void
     updateStatus: () => void
     savePhoto: (file: File) => void
-    saveProfile: () => void
-
+    saveProfile: (profile: ProfileType) => void
 }
+
 
 const ProfileContainer: FC<MapPropsType & DispatchPropsType> = (props) => {
 
@@ -59,7 +61,7 @@ function mapStateToProps(state: AppStateType) {
     };
 }
 
-export default compose < React.ComponentType > (
+export default compose<React.ComponentType>(
     connect(mapStateToProps, {getUserProfile, updateStatus, getStatus, savePhoto, saveProfile}),
-        withAuthRedirect
+    withAuthRedirect
 )(ProfileContainer)

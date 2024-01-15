@@ -7,12 +7,12 @@ import {MyPostsContainer} from "./MyPosts/MyPostsContainer.tsx";
 import {ProfileType} from "../../types/types";
 
 type PropsType = {
-    profile: ProfileType
+    profile: ProfileType | null
     status: string
     updateStatus: () => void
     isOwner: boolean
     savePhoto: (file: File) => void
-    saveProfile: () => void
+    saveProfile: (profile: ProfileType) => void
     errors: Array<string>
 }
 

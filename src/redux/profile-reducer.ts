@@ -18,7 +18,6 @@ const initialState = {
     profile: null as ProfileType | null,
     status: '',
     errors: [] as Array<string>,
-    newPostText: '',
 }
 
 

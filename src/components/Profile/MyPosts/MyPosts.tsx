@@ -1,5 +1,5 @@
 // @ts-ignore
-import React, {FC, memo} from 'react';
+import React, {FC} from 'react';
 // @ts-ignore
 import s from './MyPosts.module.css';
 // @ts-ignore
@@ -10,12 +10,15 @@ import {PostType} from "../../../types/types";
 // @ts-ignore
 
 
-type PropsType = {
+export type MapPropsType = {
     posts: Array<PostType>
-    addPost: (data: any) => void
 }
 
-const MyPosts: FC<PropsType> = memo((props) => {
+export type DispatchPropsType = {
+    addPost: (newPostText: string) => void
+}
+
+const MyPosts: FC<MapPropsType & DispatchPropsType> = (props) => {
 
     let postsElement = [...props.posts]
         .reverse()
@@ -34,6 +37,8 @@ const MyPosts: FC<PropsType> = memo((props) => {
             </div>
         </div>
     );
-});
+};
 
-export default MyPosts;
+const MyPostsMemorized = React.memo(MyPosts)
+
+export default MyPostsMemorized;

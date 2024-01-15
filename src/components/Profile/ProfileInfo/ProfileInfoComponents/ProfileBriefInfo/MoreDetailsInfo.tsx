@@ -19,7 +19,7 @@ type PropsType = {
     isOwner: boolean
     goToEditMode: () => void
     onMoreDetailClose: () => void
-    profile: ProfileType
+    profile: ProfileType | null
 }
 
 export const MoreDetailsInfo: FC<PropsType> = ({isOwner, goToEditMode, onMoreDetailClose, profile}) => {

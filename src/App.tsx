@@ -1,20 +1,27 @@
 // @ts-ignore
 import React, {FC, Suspense, useEffect} from 'react';
 import './App.css';
-import Navbar from "./components/Navbar/Navbar";
+// @ts-ignore
+import Navbar from "./components/Navbar/Navbar.tsx";
 import {Navigate, Route, Routes} from "react-router-dom";
-import News from "./components/News/News";
-import Music from "./components/Music/Music";
-import Settings from "./components/Settings/Settings";
-import HeaderContainer from "./components/Header/HeaderContainer";
+// @ts-ignore
+import News from "./components/News/News.tsx";
+// @ts-ignore
+import Music from "./components/Music/Music.tsx";
+// @ts-ignore
+import Settings from "./components/Settings/Settings.tsx";
+// @ts-ignore
+import HeaderContainer from "./components/Header/HeaderContainer.tsx";
 // @ts-ignore
 import Login from "./components/Login/Login.tsx";
 // @ts-ignore
 import ProfileContainer from "./components/Profile/ProfileContainer.tsx";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import Preloader from "./components/common/Preloader/Preloader";
-import NotFound from "./components/NotFound/NotFound";
+// @ts-ignore
+import Preloader from "./components/common/Preloader/Preloader.tsx";
+// @ts-ignore
+import NotFound from "./components/NotFound/NotFound.tsx";
 // @ts-ignore
 import {initializeApp} from "./redux/app-reducer.ts";
 import {AppStateType} from "./redux/redux-store";

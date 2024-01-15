@@ -11,9 +11,9 @@ import {ProfileType} from "../../../../../types/types";
 
 
 type PropsType = {
-    profile: ProfileType
+    profile: ProfileType | null
     isOwner: boolean
-    saveProfile: () => void
+    saveProfile: (profile: ProfileType) => void
     errors: Array<string>
 }
 
