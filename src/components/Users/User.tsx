@@ -1,10 +1,21 @@
-import React from 'react';
+// @ts-ignore
+import React, {FC} from 'react';
+// @ts-ignore
 import s from "./Users.module.css";
 import {MdOutlinePhotoCamera} from "react-icons/md";
 import {IoPersonAddSharp, IoPersonRemoveSharp} from "react-icons/io5";
 import {NavLink} from "react-router-dom";
+import {UserType} from "../../types/types";
 
-const User = ({user, followingInProgress, unfollow, follow,}) => {
+
+type PropsType = {
+    user: UserType
+    followingInProgress: Array<number>
+    unfollow: (userId: number) => void
+    follow: (userId: number) => void
+}
+
+const User: FC<PropsType> = ({user, followingInProgress, unfollow, follow,}) => {
 
     return (
         <div className={s.userBlock}>
@@ -31,18 +42,25 @@ const User = ({user, followingInProgress, unfollow, follow,}) => {
 
                         <div className={s.friendButton}>
                             {user.followed
-                                ? <button disabled={followingInProgress.some(id => id === user.id)}
-                                          onClick={() => {
-                                              unfollow(user.id)
-                                          }}>
+                                ? <button
+                                    disabled={followingInProgress.some(id => id === user.id)}
+                                    onClick={() => {
+                                        unfollow(user.id);
+                                    }}
+                                >
                                     <IoPersonRemoveSharp
-                                        style={followingInProgress.some(id => id === user.id) ? {color: "gray"} : ''}/>
+                                        style={followingInProgress.some(id => id === user.id) ? {color: "gray"} : {}}
+                                    />
                                 </button>
-                                : <button disabled={followingInProgress.some(id => id === user.id)}
-                                          onClick={() => {
-                                              follow(user.id)
-                                          }}><IoPersonAddSharp
-                                    style={followingInProgress.some(id => id === user.id) ? {color: "gray"} : ''}/>
+                                : <button
+                                    disabled={followingInProgress.some(id => id === user.id)}
+                                    onClick={() => {
+                                        follow(user.id);
+                                    }}
+                                >
+                                    <IoPersonAddSharp
+                                        style={followingInProgress.some(id => id === user.id) ? {color: "gray"} : {}}
+                                    />
                                 </button>
                             }
                         </div>

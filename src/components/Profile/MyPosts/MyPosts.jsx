@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
-import DialogsForm from "../../common/DialogsForm/DialogsForm";
+import DialogsForm from "../../common/DialogsForm/DialogsForm.tsx";
 
 const MyPosts = memo((props) => {
 

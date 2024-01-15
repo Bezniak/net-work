@@ -2,8 +2,10 @@ import {FC} from 'react';
 import {SearchInput} from '../common/SearchInput/SearchInput';
 // @ts-ignore
 import s from './Users.module.css';
-import User from './User';
-import {UserType} from "../../types/types";
+// @ts-ignore
+import User from './User.tsx';
+// @ts-ignore
+import {UserType} from "../../types/types.ts";
 // @ts-ignore
 import {Pagination} from "../common/Pagination/Pagination.tsx";
 
