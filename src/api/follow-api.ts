@@ -9,6 +9,6 @@ export const followAPI = {
     },
     async unfollow(userId: number) {
         let res = await instance.delete<APIResponseType>(`follow/${userId}`);
-        return res.data;
+        return res.data as Promise<APIResponseType>;
     },
 }

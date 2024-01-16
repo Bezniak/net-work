@@ -6,16 +6,16 @@ let state: InitialState;
 beforeEach(() => {
     state = {
         users: [
-            {id: 0, name: 'Ivan', followed: false, photos: {small: null, large: null}, status: 'ReactJS'},
-            {id: 1, name: 'Oleg', followed: false, photos: {small: null, large: null}, status: 'HTML'},
-            {id: 2, name: 'Dimych', followed: true, photos: {small: null, large: null}, status: 'CSS'},
-            {id: 3, name: 'Olga', followed: true, photos: {small: null, large: null}, status: 'Redux'},
+            {id: 0, name: 'Ivan 0', followed: false, photos: {small: null, large: null}, status: 'ReactJS'},
+            {id: 1, name: 'Ivan 1', followed: false, photos: {small: null, large: null}, status: 'HTML'},
+            {id: 2, name: 'Ivan 2', followed: true, photos: {small: null, large: null}, status: 'CSS'},
+            {id: 3, name: 'Ivan 3', followed: true, photos: {small: null, large: null}, status: 'Redux'},
         ],
         pageSize: 40,
         totalUserCount: 0,
         currentPage: 1,
         isFetching: false,
-        followingInProgress: [],  // array of users ids
+        followingInProgress: [],
     }
 })
 

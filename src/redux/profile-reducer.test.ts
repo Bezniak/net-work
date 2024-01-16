@@ -31,5 +31,5 @@ it('after deleting length of messages should be decrement', () => {
     let action = actions.deletePost(1)
 
     let newState = profileReducer(state, action)
-    expect(newState.posts.length).toBe(3)
+    expect(newState.posts.length).toBe(2)
 });
