@@ -1,6 +1,5 @@
-// @ts-ignore
-import {actions, profileReducer} from "./profile-reducer.ts";
 import {PostType, ProfileType} from "../types/types";
+import {actions, profileReducer} from "./profile-reducer";
 
 const state = {
     posts: [
@@ -10,7 +9,7 @@ const state = {
     ] as Array<PostType>,
     profile: null as ProfileType | null,
     status: '',
-    errors: [] as Array<string>,
+    errors: [],
 }
 
 it('length of post should be incremented', () => {
